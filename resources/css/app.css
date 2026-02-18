@@ -1,0 +1,11 @@
+@import "../sass/app.scss";
+@import "./style.css";
+/* Your custom styles */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
