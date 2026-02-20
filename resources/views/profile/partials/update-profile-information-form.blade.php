@@ -22,6 +22,12 @@
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full form-control" style="max-width: 30rem" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        
+        <div>
+            <x-input-label for="phone_number" class="form-label" :value="__('Phone Number')" />
+            <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 block w-full form-control" style="max-width: 30rem" :value="old('phone_number', $user->phone_number)" required autofocus autocomplete="phone_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
+        </div>
 
         <div>
             <x-input-label for="email" class="form-label" :value="__('Email')" />
