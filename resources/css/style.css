@@ -79,7 +79,9 @@ html {
     background: transparent;
     backdrop-filter: blur(20px);
 }
-
+.shadow{
+    box-shadow: #00000030 0px 10px 20px, #0000003b 0px 6px 6px;
+}
 
 
 
