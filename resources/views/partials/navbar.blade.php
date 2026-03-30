@@ -66,7 +66,7 @@
 
                         <li class="nav-item">
                             {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Cart') }}</a> --}}
-                            <a href="#" class="nav-link position-relative me-3">
+                            {{-- <a href="#" class="nav-link position-relative me-3">
                                 <i class="fa-solid fa-shopping-cart text-white"></i>
                                 @auth
                                     <span
@@ -78,7 +78,7 @@
                                     </span>
                                 @endauth
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
