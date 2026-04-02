@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<head>
-    <style>
-        body {
-            background-image: url('{{ asset('assets/images/15796.jpg') }}');
-        }
-    </style>
-</head>
+
+    <head>
+        <style>
+            body {
+                background-image: url('{{ asset('assets/images/15796.jpg') }}');
+            }
+        </style>
+    </head>
     <section>
         <!-- hero start -->
         <section class="eatry_hero">
@@ -141,35 +142,91 @@
         <!-- menu end -->
 
         <!-- full_menu start -->
-        <section class="container-fluid" id="menu" style="color: wheat;">
-            <P style="color: orangered;" class="text-center pt-5">OUR FULL MENU</P>
-            <h1 class="pt-3 text-capitalize text-end pe-5 fw-bold">
-                pasta
-            </h1>
+        <section class="container-fluid" id="menu">
             <div class="container-fluid py-5">
                 <div class="row">
-                    <div class="col-12 col-lg-3">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="">
-                            <div class="card-body">
-                                <h3 class="card-title text-uppercase fw-bold">jollof rice</h3>
-                                <p class="card-body">spicy jollof rice made with lots of hot pepper and seasoned to
-                                    perfection</p>
-                                <div class="text-end">
-                                    <p class="btn text-white" style="background-color: orangered;">3,500.00</p>
+                    @php
+                        use Illuminate\Support\Str;
+                    @endphp
 
+                    <div class="container py-5">
+                        <div class="text-center mb-5" style="color: orangered">
+                            <h1 class="fw-bold display-6">Our Menu</h1>
+                            <p class="wheat">Delicious meals made fresh for you</p>
+                        </div>
+
+                        <h2 class="pt-3 text-capitalize text-end pe-5 fw-bold" style="color: orangered;">
+                            pasta
+                        </h2>
+
+                        <div class="row g-4">
+                            @forelse($eaterys as $eatery)
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="card eatery-card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+
+                                        {{-- eatery Image --}}
+                                        <div class="position-relative">
+                                            <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
+                                                class="card-img-top" alt="{{ $eatery->name }}"
+                                                style="height: 230px; object-fit: cover;">
+
+                                            {{-- Category Badge --}}
+                                            <span
+                                                class="badge wheat position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm"
+                                                style="background-color: orangered">
+                                                {{ $eatery->category->name ?? 'Uncategorized' }}
+                                            </span>
+                                        </div>
+
+                                        {{-- eatery Content --}}
+                                        <div class="card-body d-flex flex-column p-4" style="background-color: #212529">
+                                            <h5 class="fw-bold wheat mb-2">{{ $eatery->name }}</h5>
+
+                                            <p class="wheat small mb-3">
+                                                {{ Str::limit($eatery->description, 80) }}
+                                            </p>
+
+                                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                                <h5 class="fw-bold wheat mb-0">₦{{ number_format($eatery->price, 2) }}
+                                                </h5>
+
+                                                <a href="#" class="btn btn text-white rounded-pill px-4"
+                                                    style="background-color: orangered">
+                                                    Add
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @empty
+                                <div class="col-12">
+                                    <div class="alert alert-warning text-center rounded-4 shadow-sm">
+                                        No eaterys available at the moment.
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="card bg-dark text-white">
-                            <div class="card-body">
-                                <h3 class="card-title">Title</h3>
-                                <p class="card-text">Text</p>
-                            </div>
-                        </div>
-                    </div>
+
+                    {{-- Custom Styling --}}
+                    {{-- <style>
+            .eatery-card {
+                transition: all 0.3s ease;
+            }
+
+            .eatery-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08) !important;
+            }
+
+            .eatery-card img {
+                transition: transform 0.4s ease;
+            }
+
+            .eatery-card:hover img {
+                transform: scale(1.05);
+            }
+        </style> --}}
                 </div>
 
             </div>

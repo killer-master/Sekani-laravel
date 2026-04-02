@@ -100,28 +100,28 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end" style="background-color: #212529" aria-labelledby="navbarDropdown">
 
                                     @if (Auth::user()->role == 'admin')
-                                        <a href="#" class="dropdown-item text-white"> Categories </a>
+                                        <a href="{{ route('eatery.index') }}" class="dropdown-item wheat"> Eatery </a>
                                         <a href="#" class="dropdown-item wheat"> Gallery </a>
-                                        <a href="#" class="dropdown-item"> Products </a>
-                                        <a href="#" class="dropdown-item"> Orders </a>
+                                        <a href="#" class="dropdown-item wheat"> Products </a>
+                                        <a href="#" class="dropdown-item wheat"> Orders </a>
                                     @else
-                                        <a href="#" class="dropdown-item">My Cart </a>
-                                        <a href="#" class="dropdown-item">My Orders </a>
-                                        <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a>
+                                        <a href="#" class="dropdown-item wheat">My Cart </a>
+                                        <a href="#" class="dropdown-item wheat">My Orders </a>
+                                        <a href="{{ route('profile.edit') }}" class="dropdown-item wheat">Profile</a>
                                     @endif
 
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item wheat" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                        class="d-none wheat">
                                         @csrf
                                     </form>
                                 </div>

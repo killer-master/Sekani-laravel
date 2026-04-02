@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EateryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,7 @@ Route::get('/pool', [PageController::class, 'pool'])->name('pool.page');
 Route::get('/rooftop', [PageController::class, 'rooftop'])->name('rooftop.page');
 Route::get('/saloon', [PageController::class, 'saloon'])->name('saloon.page');
 Route::get('/vip', [PageController::class, 'vip'])->name('vip.page');
+
+
+
+Route::resource('admin/eatery', EateryController::class)->except(['show'])->middleware(['auth', 'check.admin']);

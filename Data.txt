@@ -1,0 +1,9 @@
+Users  - name, email, password, phone, role[admin, user]
+
+eatery -  Name, image, price, category of food, discription,
+
+Products - name, price, sku (Stock Keeping Unit), stock, color, category
+
+Cart - user, product, quantity, price, address.
+
+Galleries - name, caption

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eatery;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -16,7 +17,9 @@ class PageController extends Controller
     }
     public function eatry()
     {
-        return view('eatry');
+        $eaterys = Eatery::latest()->get(); 
+
+        return view('eatry', compact('eaterys'));
     }
     public function game()
     {

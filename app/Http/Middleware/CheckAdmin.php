@@ -16,11 +16,20 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            abort(401);
+        if (!Auth::check()) {
+            return redirect('/login');
         }
+
+        if (Auth::user()->role !== 'admin') {
+            return redirect('/')->with('error', 'Access denied. Admins only.');
+        }
+
         return $next($request);
+        // $user = Auth::user();
+        // if ($user->role != 'admin') {
+        //     abort(401);
+        // }
+        // return $next($request);
 
         
     }
