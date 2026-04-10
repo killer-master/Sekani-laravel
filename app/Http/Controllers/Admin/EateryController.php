@@ -61,7 +61,7 @@ class EateryController extends Controller
 
         Alert::success('Created Successfully');
 
-        return back();
+        return back()->with('success','saved successfully');
     }
 
     /**
@@ -122,9 +122,9 @@ class EateryController extends Controller
             ]);
         }
 
-        Alert::success('Update Successfully');
+        Alert::success('Updated Successfully');
 
-        return back();
+        return back()->with('success','Updated successfully');
     }
 
     /**
@@ -146,6 +146,6 @@ class EateryController extends Controller
         } else {
             Alert::error("Failed to delete Eatery");
         }
-        return back();
+        return back()->with('success', 'Eatery deleted successfully!');
     }
 }

@@ -56,8 +56,8 @@
         <main class="">
             @yield('content')
         </main>
+        @include('partials.alert')
         @include('partials.footer')
-        @include('sweetalert2::index')
     </div>
     {{-- <link rel="stylesheet" href="{{ assets('assets/js/bootstrap.bundle.min.js') }}"> --}}
 </body>

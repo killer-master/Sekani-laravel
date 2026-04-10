@@ -1,236 +1,474 @@
 @extends('layouts.app')
 @section('content')
 
-    <head>
-        <style>
-            body {
-                background-image: url('{{ asset('assets/images/15796.jpg') }}');
-            }
-        </style>
-    </head>
-    <section>
-        <!-- hero start -->
+    <section class="premium-eatery-page">
+
         <section class="eatry_hero">
+            <div class="hero-overlay"></div>
             <div class="container-fluid">
-                <div class="row pt-5">
-                    <div class="col-12 col-lg-6 text-capitalize">
-                        <div class="h1 food_hero">
-                            where flavor meets <span style="color: orangered;">happiness</span>
+                <div class="row min-vh-100 align-items-center pt-5">
+                    <div class="col-12 col-lg-7 col-xl-6 text-capitalize hero-content">
+                        <div class="hero-badge mb-3">
+                            Premium Dining Experience
                         </div>
-                        <div class="food_text" style="color: wheat;">
-                            Experince authentic local dishes and premium continetal meals crafted with love. From family
-                            dinners to event catering, we bring delicious moments to your table.
-                        </div><br>
-                        <a href="#menu">
-                            <div class="btn btn-dark button px-3 py-2" style="color: wheat;">
-                                View Menu <i class="fa-solid fa-utensils"></i>
-                            </div>
-                        </a><br><br>
-                        <div style="color: wheat;">
-                            <i class="fa-solid fa-leaf" style="color: orangered;"></i> Fresh ingredients .
-                            <i class="fa-solid fa-bowl-food" style="color: orangered;"></i> Made to order
+
+                        <div class="display-3 fw-bold food_hero mb-4">
+                            where flavor meets <span class="accent-text">happiness</span>
+                        </div>
+
+                        <div class="food_text mb-4">
+                            Experience authentic local dishes and premium continental meals crafted with love.
+                            From family dinners to event catering, we bring delicious moments to your table.
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-3 mb-4">
+                            <a href="#menu" class="btn premium-btn-primary px-4 py-3 rounded-pill">
+                                View Menu <i class="fa-solid fa-utensils ms-2"></i>
+                            </a>
+
+                            <a href="#featured-menu" class="btn premium-btn-outline px-4 py-3 rounded-pill">
+                                Explore Categories
+                            </a>
+                        </div>
+
+                        <div class="hero-features">
+                            <span><i class="fa-solid fa-leaf"></i> Fresh ingredients</span>
+                            <span><i class="fa-solid fa-bowl-food"></i> Made to order</span>
+                            <span><i class="fa-solid fa-truck-fast"></i> Fast service</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
-        <!-- hero end -->
 
-        <!-- menu start -->
-        <section>
-            <div class="container-fluid" style="color: wheat;">
-                <div class="text-center py-5">
-                    <P style="color: orangered;">OUR MENU</P>
-                    <P class="text-capitalize h1 fw-bold">
-                        discoverour our delicious <span style="color: orangered;">varieties</span>
-                    </P>
-                    <p class="">
-                        From authentic Nigerian classics to international favorites, every dish is <br>prepared fresh with
-                        premium ingredients
+        {{-- Featured Menu Categories --}}
+        <section id="featured-menu" class="py-5">
+            <div class="container-fluid">
+                <div class="text-center py-5 section-heading">
+                    <p class="section-mini-title">OUR MENU</p>
+                    <h2 class="text-capitalize fw-bold section-title">
+                        discover our delicious <span class="accent-text">varieties</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        From authentic Nigerian classics to international favorites, every dish is
+                        prepared fresh with premium ingredients.
                     </p>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-lg-3">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="">
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card premium-menu-card h-100 border-0 overflow-hidden">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Swallow & Soup" class="card-img-top premium-card-img">
                             <div class="card-body">
-                                <h3 class="card-title text-uppercase">Swallow & Soup</h3>
-                                Authentic Nigerian flavor
-                                <p class="card-text">
-                                <ul class="container">
-                                    <li class="text-uppercase">Garri</li>
-                                    <li class="text-uppercase">Semo</li>
-                                    <li class="text-uppercase">okro soup </li>
-                                    <li class="text-uppercase">egusi soup</li>
+                                <h3 class="card-title text-uppercase fw-bold">Swallow & Soup</h3>
+                                <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
+                                <ul class="premium-list">
+                                    <li>Garri</li>
+                                    <li>Semo</li>
+                                    <li>Okro Soup</li>
+                                    <li>Egusi Soup</li>
                                 </ul>
-                                </p>
-                                <a href="#" class="fs-5 fw-bold" style="text-decoration: none; color: orangered;">
-                                    Learn
-                                    More <i class="fa-solid fa-arrow-right"></i>
+                                <a href="#menu" class="card-link-custom">
+                                    Learn More <i class="fa-solid fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="">
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card premium-menu-card h-100 border-0 overflow-hidden">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Protein" class="card-img-top premium-card-img">
                             <div class="card-body">
-                                <h3 class="card-title text-uppercase">protein</h3>
-                                Authentic Nigerian flavor
-                                <p class="card-text">
-                                <ul class="container">
-                                    <li class="text-uppercase">chicken</li>
-                                    <li class="text-uppercase">beef</li>
-                                    <li class="text-uppercase">fish </li>
-                                    <li class="text-uppercase"> boiled egg</li>
+                                <h3 class="card-title text-uppercase fw-bold">Protein</h3>
+                                <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
+                                <ul class="premium-list">
+                                    <li>Chicken</li>
+                                    <li>Beef</li>
+                                    <li>Fish</li>
+                                    <li>Boiled Egg</li>
                                 </ul>
-                                </p>
-                                <a href="#" class="fs-5 fw-bold" style="text-decoration: none; color: orangered;">
-                                    Learn
-                                    More <i class="fa-solid fa-arrow-right"></i>
+                                <a href="#menu" class="card-link-custom">
+                                    Learn More <i class="fa-solid fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="">
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card premium-menu-card h-100 border-0 overflow-hidden">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Pasta" class="card-img-top premium-card-img">
                             <div class="card-body">
-                                <h3 class="card-title text-uppercase">pasta</h3>
-                                Authentic Nigerian flavor
-                                <p class="card-text">
-                                <ul class="container">
-                                    <li class="text-uppercase">jollof rice</li>
-                                    <li class="text-uppercase">fried rice</li>
-                                    <li class="text-uppercase">jollof spaghetti </li>
-                                    <li class="text-uppercase">white rice & stew</li>
+                                <h3 class="card-title text-uppercase fw-bold">Pasta</h3>
+                                <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
+                                <ul class="premium-list">
+                                    <li>Jollof Rice</li>
+                                    <li>Fried Rice</li>
+                                    <li>Jollof Spaghetti</li>
+                                    <li>White Rice & Stew</li>
                                 </ul>
-                                </p>
-                                <a href="#" class="fs-5 fw-bold" style="text-decoration: none; color: orangered;">
-                                    Learn
-                                    More <i class="fa-solid fa-arrow-right"></i>
+                                <a href="#menu" class="card-link-custom">
+                                    Learn More <i class="fa-solid fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="">
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card premium-menu-card h-100 border-0 overflow-hidden">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Beverage" class="card-img-top premium-card-img">
                             <div class="card-body">
-                                <h3 class="card-title text-uppercase">beverage</h3>
-                                Authentic Nigerian flavor
-                                <p class="card-text container">
-                                <ul class="container">
-                                    <li class="text-uppercase">hollandia</li>
-                                    <li class="text-uppercase">vital milk</li>
-                                    <li class="text-uppercase">bottle water </li>
-                                    <li class="text-uppercase">exotic can</li>
+                                <h3 class="card-title text-uppercase fw-bold">Beverage</h3>
+                                <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
+                                <ul class="premium-list">
+                                    <li>Hollandia</li>
+                                    <li>Vital Milk</li>
+                                    <li>Bottled Water</li>
+                                    <li>Exotic Can</li>
                                 </ul>
-                                </p>
-                                <a href="#" class="fs-5 fw-bold" style="text-decoration: none; color: orangered;">
-                                    Learn
-                                    More <i class="fa-solid fa-arrow-right"></i>
+                                <a href="#menu" class="card-link-custom">
+                                    Learn More <i class="fa-solid fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
-        <!-- menu end -->
 
-        <!-- full_menu start -->
-        <section class="container-fluid" id="menu">
-            <div class="container-fluid py-5">
-                <div class="row">
-                    @php
-                        use Illuminate\Support\Str;
-                    @endphp
+        {{-- Full Menu --}}
+        <section class="container-fluid py-5" id="menu">
+            <div class="container py-5">
+                @php
+                    use Illuminate\Support\Str;
+                @endphp
 
-                    <div class="container py-5">
-                        <div class="text-center mb-5" style="color: orangered">
-                            <h1 class="fw-bold display-6">Our Menu</h1>
-                            <p class="wheat">Delicious meals made fresh for you</p>
-                        </div>
+                <div class="text-center mb-5 section-heading">
+                    <p class="section-mini-title">FULL MENU</p>
+                    <h2 class="fw-bold display-6 section-title">Our Menu</h2>
+                    <p class="section-subtitle">Delicious meals made fresh for you</p>
+                </div>
 
-                        <h2 class="pt-3 text-capitalize text-end pe-5 fw-bold" style="color: orangered;">
-                            pasta
-                        </h2>
+                <div class="d-flex justify-content-end mb-4">
+                    <h4 class="text-capitalize fw-bold accent-text">Pasta</h4>
+                </div>
 
-                        <div class="row g-4">
-                            @forelse($eaterys as $eatery)
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="card eatery-card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+                <div class="row g-4">
+                    @forelse($eaterys as $eatery)
+                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                            <div class="card eatery-card premium-food-card border-0 rounded-4 h-100 overflow-hidden">
 
-                                        {{-- eatery Image --}}
-                                        <div class="position-relative">
-                                            <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
-                                                class="card-img-top" alt="{{ $eatery->name }}"
-                                                style="height: 230px; object-fit: cover;">
+                                <div class="position-relative image-wrap">
+                                    <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
+                                        class="card-img-top" alt="{{ $eatery->name }}"
+                                        style="height: 230px; object-fit: cover;">
 
-                                            {{-- Category Badge --}}
-                                            <span
-                                                class="badge wheat position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm"
-                                                style="background-color: orangered">
-                                                {{ $eatery->category->name ?? 'Uncategorized' }}
-                                            </span>
-                                        </div>
+                                    <div class="image-overlay"></div>
 
-                                        {{-- eatery Content --}}
-                                        <div class="card-body d-flex flex-column p-4" style="background-color: #212529">
-                                            <h5 class="fw-bold wheat mb-2">{{ $eatery->name }}</h5>
+                                    <span class="badge premium-badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+                                        {{ $eatery->category->name ?? 'Uncategorized' }}
+                                    </span>
+                                </div>
 
-                                            <p class="wheat small mb-3">
-                                                {{ Str::limit($eatery->description, 80) }}
-                                            </p>
+                                <div class="card-body d-flex flex-column p-4 premium-food-body">
+                                    <h5 class="fw-bold text-white mb-2">{{ $eatery->name }}</h5>
 
-                                            <div class="mt-auto d-flex justify-content-between align-items-center">
-                                                <h5 class="fw-bold wheat mb-0">₦{{ number_format($eatery->price, 2) }}
-                                                </h5>
+                                    <p class="text-light-emphasis small mb-3">
+                                        {{ Str::limit($eatery->description, 80) }}
+                                    </p>
 
-                                                <a href="#" class="btn btn text-white rounded-pill px-4"
-                                                    style="background-color: orangered">
-                                                    Add
-                                                </a>
-                                            </div>
-                                        </div>
+                                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                                        <h5 class="fw-bold text-white mb-0">₦{{ number_format($eatery->price, 2) }}</h5>
+
+                                        <a href="#" class="btn premium-btn-primary-sm rounded-pill px-4">
+                                            Add
+                                        </a>
                                     </div>
                                 </div>
-                            @empty
-                                <div class="col-12">
-                                    <div class="alert alert-warning text-center rounded-4 shadow-sm">
-                                        No eaterys available at the moment.
-                                    </div>
-                                </div>
-                            @endforelse
+                            </div>
                         </div>
-                    </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="empty-state text-center rounded-4 shadow-sm p-5">
+                                <h5 class="fw-bold mb-2 text-white">No menu items yet</h5>
+                                <p class="text-light-emphasis mb-0">Fresh dishes will appear here soon.</p>
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+        </section>
 
-                    {{-- Custom Styling --}}
-                    {{-- <style>
-            .eatery-card {
+        <style>
+            body {
+                background: url('{{ asset('assets/images/15796.jpg') }}') center center / cover fixed no-repeat;
+                position: relative;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: linear-gradient(180deg, rgba(8, 8, 8, 0.85), rgba(12, 12, 12, 0.92));
+                z-index: -1;
+            }
+
+            .premium-eatery-page {
+                color: #fff;
+            }
+
+            .accent-text {
+                color: orangered;
+            }
+
+            .eatry_hero {
+                position: relative;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+
+            .hero-overlay {
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at top left, rgba(255, 69, 0, 0.18), transparent 40%);
+                pointer-events: none;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+            }
+
+            .hero-badge {
+                display: inline-block;
+                padding: 0.6rem 1rem;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #f8f9fa;
+            }
+
+            .food_hero {
+                line-height: 1.1;
+                letter-spacing: -0.04em;
+                color: #fff;
+            }
+
+            .food_text {
+                max-width: 650px;
+                color: rgba(255, 255, 255, 0.78);
+                font-size: 1.08rem;
+                line-height: 1.8;
+            }
+
+            .hero-features {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                color: rgba(255, 255, 255, 0.78);
+                font-size: 0.95rem;
+            }
+
+            .hero-features i {
+                color: orangered;
+                margin-right: 0.45rem;
+            }
+
+            .premium-btn-primary,
+            .premium-btn-primary-sm,
+            .premium-btn-outline {
+                border: none;
+                font-weight: 600;
                 transition: all 0.3s ease;
             }
 
-            .eatery-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08) !important;
+            .premium-btn-primary {
+                background: linear-gradient(135deg, orangered, #ff7a3d);
+                color: #fff;
+                box-shadow: 0 12px 30px rgba(255, 69, 0, 0.28);
             }
 
-            .eatery-card img {
-                transition: transform 0.4s ease;
+            .premium-btn-primary:hover {
+                transform: translateY(-3px);
+                color: #fff;
+                box-shadow: 0 16px 36px rgba(255, 69, 0, 0.35);
             }
 
-            .eatery-card:hover img {
+            .premium-btn-primary-sm {
+                background: linear-gradient(135deg, orangered, #ff7a3d);
+                color: #fff;
+                font-size: 0.95rem;
+            }
+
+            .premium-btn-primary-sm:hover {
+                transform: translateY(-2px);
+                color: #fff;
+            }
+
+            .premium-btn-outline {
+                background: rgba(255, 255, 255, 0.05);
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                backdrop-filter: blur(10px);
+            }
+
+            .premium-btn-outline:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+                transform: translateY(-3px);
+            }
+
+            .section-heading {
+                max-width: 750px;
+                margin: 0 auto;
+            }
+
+            .section-mini-title {
+                color: orangered;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .section-title {
+                color: #fff;
+                letter-spacing: -0.03em;
+            }
+
+            .section-subtitle {
+                color: rgba(255, 255, 255, 0.72);
+                line-height: 1.8;
+            }
+
+            .premium-menu-card {
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(14px);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+                transition: all 0.35s ease;
+                color: #fff;
+            }
+
+            .premium-menu-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 24px 45px rgba(0, 0, 0, 0.25);
+            }
+
+            .premium-card-img {
+                height: 220px;
+                object-fit: cover;
+                transition: transform 0.45s ease;
+            }
+
+            .premium-menu-card:hover .premium-card-img {
                 transform: scale(1.05);
             }
-        </style> --}}
-                </div>
 
-            </div>
-        </section>
-        <!-- full_menu end -->
+            .text-muted-light {
+                color: rgba(255, 255, 255, 0.72);
+            }
+
+            .premium-list {
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 1.2rem;
+            }
+
+            .premium-list li {
+                padding: 0.45rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                text-transform: uppercase;
+                font-size: 0.92rem;
+                color: rgba(255, 255, 255, 0.88);
+            }
+
+            .card-link-custom {
+                text-decoration: none;
+                color: orangered;
+                font-weight: 700;
+                transition: all 0.3s ease;
+            }
+
+            .card-link-custom:hover {
+                color: #ff8c5a;
+            }
+
+            .premium-food-card {
+                background: transparent;
+                box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+                transition: all 0.35s ease;
+            }
+
+            .premium-food-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+            }
+
+            .image-wrap {
+                overflow: hidden;
+            }
+
+            .premium-food-card img {
+                transition: transform 0.5s ease;
+            }
+
+            .premium-food-card:hover img {
+                transform: scale(1.08);
+            }
+
+            .image-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.02));
+            }
+
+            .premium-badge {
+                background: rgba(255, 69, 0, 0.95);
+                color: #fff;
+                font-weight: 600;
+                box-shadow: 0 10px 24px rgba(255, 69, 0, 0.28);
+            }
+
+            .premium-food-body {
+                background: rgba(20, 20, 20, 0.88);
+                backdrop-filter: blur(14px);
+            }
+
+            .empty-state {
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(14px);
+            }
+
+            @media (max-width: 991px) {
+                .food_hero {
+                    font-size: 2.6rem !important;
+                }
+
+                .eatry_hero {
+                    min-height: auto;
+                    padding: 7rem 0 4rem;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .food_hero {
+                    font-size: 2.2rem !important;
+                }
+
+                .food_text {
+                    font-size: 1rem;
+                }
+
+                .hero-features {
+                    gap: 0.8rem;
+                    flex-direction: column;
+                }
+            }
+        </style>
     </section>
 @endsection
