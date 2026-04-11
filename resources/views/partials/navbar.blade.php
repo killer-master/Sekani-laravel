@@ -104,6 +104,7 @@
 
                                     @if (Auth::user()->role == 'admin')
                                         <a href="{{ route('eatery.index') }}" class="dropdown-item wheat"> Eatery </a>
+                                        <a href="{{ route('eaterycategory.index') }}" class="dropdown-item wheat"> Eatery Category </a>
                                         <a href="#" class="dropdown-item wheat"> Gallery </a>
                                         <a href="#" class="dropdown-item wheat"> Products </a>
                                         <a href="#" class="dropdown-item wheat"> Orders </a>

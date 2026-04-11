@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EateryCategoryController;
 use App\Http\Controllers\Admin\EateryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
@@ -37,3 +38,4 @@ Route::get('/vip', [PageController::class, 'vip'])->name('vip.page');
 
 
 Route::resource('admin/eatery', EateryController::class)->except(['show'])->middleware(['auth', 'check.admin']);
+Route::resource('admin/eaterycategory', EateryCategoryController::class)->except(['show'])->middleware(['auth', 'check.admin']);

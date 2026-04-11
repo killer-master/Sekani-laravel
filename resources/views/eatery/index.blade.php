@@ -8,7 +8,7 @@
             </ol>
         </nav>
 
-        <div class="row align-items-center mb-5 g-3">
+        <div class="row align-items-center mb-2 g-3">
             <div class="col-md-6">
                 <div class="page-title-wrap">
                     <h1 class="fw-bold mb-1 page-title">Eatery</h1>
@@ -18,6 +18,19 @@
             <div class="col-md-6 text-md-end">
                 <a href="{{ route('eatery.create') }}" class="btn premium-btn-dark rounded-pill px-4 py-3 shadow-sm">
                     + Add New Food
+                </a>
+            </div>
+        </div>
+        <div class="row align-items-center mb-5 g-3">
+            <div class="col-md-6">
+                <div class="page-title-wrap">
+                    <h1 class="fw-bold mb-1 page-title">Eatery Category</h1>
+                    <p class="text-muted mb-0">Add more catergories</p>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="{{ route('eaterycategory.index') }}" class="btn premium-btn-dark rounded-pill px-4 py-3 shadow-sm">
+                    + Add New Categories
                 </a>
             </div>
         </div>
