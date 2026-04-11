@@ -1,118 +1,112 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
-        <div class="container my-5">
-            <nav class="breadcrumb">
-                <a class="breadcrumb-item" href="{{ route('home.page') }}">Home</a>
-                <a class="breadcrumb-item" href="{{ route('eatery.index') }}">Eatery</a>
-                <span class="breadcrumb-item active" aria-current="page">Eatery Category</span>
-            </nav>
+<section class="ecat-wrapper">
+    <div class="container ecat-container">
 
-            <div class="card mx-auto bg-white" style="max-width: 900px">
-                <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                    <h3>Categories</h3>
+        <!-- Breadcrumb -->
+        <nav class="ecat-breadcrumb">
+            <a href="{{ route('home.page') }}">Home</a>
+            <span>/</span>
+            <a href="{{ route('eatery.index') }}">Eatery</a>
+            <span>/</span>
+            <span class="active">Category</span>
+        </nav>
 
-                    <!-- Modal trigger button -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalId">
-                        Add Category
-                    </button>
+        <!-- Card -->
+        <div class="ecat-card">
 
-                    <!-- Modal Body -->
-                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-                        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-                            <form method="POST" action="{{ route('eaterycategory.store') }}" class="modal-content">
-                                @csrf
+            <!-- Header -->
+            <div class="ecat-header">
+                <h2 class="ecat-title">Eatery Categories</h2>
 
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalTitleId">
-                                        New Category
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Name</label>
-                                        <input type="text" class="form-control" name="name"
-                                            value="{{ old('name') }}" id="" aria-describedby="helpId"
-                                            placeholder="" />
-
-                                        @error('name')
-                                            <small id="helpId" class="text-danger fw-bold"> {{ $message }} </small>
-                                        @enderror
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                        Close
-                                    </button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Optional: Place to the bottom of scripts -->
-                    <script>
-                        const myModal = new bootstrap.Modal(
-                            document.getElementById("modalId"),
-                            options,
-                        );
-                    </script>
-
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Category Name</th>
-                                    <th scope="col">Created At</th>
-                                    <th scope="col">Last Updated</th>
-                                    <th scope="col" class="ps-5">...</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($categories as $category)
-                                    <tr class="">
-                                        <td> {{ $category->name }} </td>
-                                        <td>
-                                            {{ $category->created_at->format('M. jS Y') }}
-                                        </td>
-                                        <td>
-                                            {{ $category->updated_at->diffForHumans() }}
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center gap-2">
-                                                <a href="{{ route('eaterycategory.edit', $category->id) }}"
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="fa-solid fa-edit"></i>
-                                                </a>
-                                                <form action="{{ route('eaterycategory.destroy', $category->id) }}"
-                                                    method="POST" class="delete-form">
-                                                    @csrf @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm delete-form">
-                                                        <i class="fa-solid fa-trash-alt"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="4"> No Catgories Added Yet</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
+                <button class="ecat-btn-primary" data-bs-toggle="modal" data-bs-target="#modalId">
+                    + Add Category
+                </button>
             </div>
+
+            <!-- Table -->
+            <div class="ecat-table-wrapper">
+                <table class="ecat-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @forelse ($categories as $category)
+                            <tr>
+                                <td class="ecat-name">{{ $category->name }}</td>
+
+                                <td>{{ $category->created_at->format('M d, Y') }}</td>
+
+                                <td>{{ $category->updated_at->diffForHumans() }}</td>
+
+                                <td>
+                                    <div class="ecat-actions">
+                                        <a href="{{ route('eaterycategory.edit', $category->id) }}"
+                                           class="ecat-btn-edit">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+
+                                        <form action="{{ route('eaterycategory.destroy', $category->id) }}"
+                                              method="POST" class="delete-form">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button class="ecat-btn-delete delete-form-category">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="ecat-empty">
+                                    No categories yet
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
         </div>
-    </section>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal fade ecat-modal" id="modalId" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <form method="POST" action="{{ route('eaterycategory.store') }}" class="modal-content ecat-modal-content">
+                @csrf
+
+                <div class="ecat-modal-header d-flex justify-content-between">
+                    <h5>Add Category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="ecat-modal-body">
+                    <label class="ecat-label">Category Name</label>
+                    <input type="text" name="name" value="{{ old('name') }}" class="ecat-input">
+
+                    @error('name')
+                        <small class="ecat-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="ecat-modal-footer my-3  d-flex justify-content-between">
+                    <button type="button" data-bs-dismiss="modal" class="ecat-btn-secondary">Cancel</button>
+                    <button type="submit" class="ecat-btn-primary">Save</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</section>
 @endsection

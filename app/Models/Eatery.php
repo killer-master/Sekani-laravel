@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Eatery extends Model
 {
     protected $fillable = [
-        // 'category_id',
+        'category_id',
         'name',
         'price',
         'image',
         'sku',
         'description'
     ];
+
+    public function category() {
+        return $this->belongsTo(EateryCategory::class, 'category_id');
+    }
 }

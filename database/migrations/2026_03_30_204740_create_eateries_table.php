@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('eateries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->nullable()->constrained('eatery_categories', 'id')->cascadeOnDelete();
             $table->string('name');
             $table->string('sku')->unique();
             $table->decimal('price', 8,2);

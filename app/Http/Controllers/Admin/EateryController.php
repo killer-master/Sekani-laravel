@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Eatery;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\EateryCategory;
 use Illuminate\Support\Facades\File;
 use Pest\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -29,7 +30,8 @@ class EateryController extends Controller
      */
     public function create()
     {
-        return view('eatery.create');
+        $categories = EateryCategory::all()->sortBy('name');
+        return view('eatery.create', compact('categories'));
     }
 
     /**
@@ -40,6 +42,7 @@ class EateryController extends Controller
         $data = $request-> validate([
             'name' => "required|string",
             'price' => "required|numeric",
+            'category' => "required|exists:eatery_categories,id",
             'image' => "required|image|mimes:png,jpg,jpeg,gif|max:2048",
             'description' => "required|string",
         ]);
@@ -52,6 +55,7 @@ class EateryController extends Controller
         $file->move(public_path('uploads/eatery'), $fileName);
 
         Eatery::create([
+            'category_id' => $data['category'],
             'sku' => $sku,
             'name' => $data['name'],
             'price' => $data['price'],
@@ -78,7 +82,8 @@ class EateryController extends Controller
     public function edit(string $sku)
     {
         $eatery = Eatery::where('sku',  $sku)->firstOrFail();
-        return view('eatery.edit', compact('eatery'));
+        $categories = EateryCategory::all()->sortBy('name');
+        return view('eatery.edit', compact('eatery', 'categories'));
     }
 
     

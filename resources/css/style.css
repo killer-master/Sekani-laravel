@@ -458,9 +458,308 @@ html {
     transform: scale(1.05);
 }
 
+/* ==== eatery category index ==== */
 
+/* ===== Wrapper ===== */
+.ecat-wrapper {
+    background: #0f172a;
+    min-height: 80vh;
+    padding: 40px 0;
+}
 
+/* ===== Container ===== */
+.ecat-container {
+    max-width: 1000px;
+}
 
+/* ===== Breadcrumb ===== */
+.ecat-breadcrumb {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.ecat-breadcrumb a {
+    color: #cbd5f5;
+    text-decoration: none;
+}
+
+.ecat-breadcrumb .active {
+    color: #facc15;
+}
+
+/* ===== Card ===== */
+.ecat-card {
+    background: #111827;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* ===== Header ===== */
+.ecat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ecat-title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ===== Buttons ===== */
+.ecat-btn-primary {
+    background: linear-gradient(135deg, #facc15, #eab308);
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+}
+
+.ecat-btn-secondary {
+    background: #374151;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* ===== Table ===== */
+.ecat-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ecat-table th {
+    color: #9ca3af;
+    font-weight: 500;
+    padding: 12px;
+}
+
+.ecat-table td {
+    color: #e5e7eb;
+    padding: 14px 12px;
+    border-top: 1px solid #1f2937;
+}
+
+.ecat-name {
+    font-weight: 600;
+}
+
+/* ===== Actions ===== */
+.ecat-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.ecat-btn-edit {
+    background: #1d4ed8;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.ecat-btn-delete {
+    background: #dc2626;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* ===== Empty ===== */
+.ecat-empty {
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+}
+
+/* ===== Modal ===== */
+.ecat-modal-content {
+    background: #111827;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.ecat-modal-header h5 {
+    color: #fff;
+}
+
+.ecat-label {
+    color: #cbd5f5;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.ecat-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1f2937;
+    color: #fff;
+}
+
+.ecat-error {
+    color: #f87171;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .ecat-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ecat-table thead {
+        display: none;
+    }
+
+    .ecat-table tr {
+        display: block;
+        margin-bottom: 15px;
+        background: #1f2937;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .ecat-table td {
+        display: block;
+        border: none;
+        padding: 6px 0;
+    }
+}
+
+/* eatery category edit */
+
+/* ===== EDIT WRAPPER ===== */
+.ecat-edit-wrapper {
+    background: #0f172a;
+    min-height: 80vh;
+    padding: 40px 0;
+}
+
+/* ===== CONTAINER ===== */
+.ecat-edit-container {
+    max-width: 700px;
+}
+
+/* ===== BREADCRUMB ===== */
+.ecat-edit-breadcrumb {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.ecat-edit-breadcrumb a {
+    color: #cbd5f5;
+    text-decoration: none;
+}
+
+.ecat-edit-breadcrumb .active {
+    color: #facc15;
+}
+
+/* ===== CARD ===== */
+.ecat-edit-card {
+    background: #111827;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* ===== HEADER ===== */
+.ecat-edit-header h2 {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.ecat-edit-subtitle {
+    color: #9ca3af;
+}
+
+.ecat-edit-subtitle span {
+    color: #facc15;
+    font-weight: 600;
+}
+
+/* ===== FORM ===== */
+.ecat-edit-form {
+    margin-top: 25px;
+}
+
+/* ===== INPUT GROUP ===== */
+.ecat-edit-group {
+    margin-bottom: 20px;
+}
+
+.ecat-edit-label {
+    display: block;
+    color: #cbd5f5;
+    margin-bottom: 6px;
+}
+
+.ecat-edit-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #1f2937;
+    color: #fff;
+    outline: none;
+}
+
+.ecat-edit-input:focus {
+    border: 1px solid #facc15;
+}
+
+/* ===== ERROR ===== */
+.ecat-edit-error {
+    color: #f87171;
+    font-size: 13px;
+}
+
+/* ===== ACTIONS ===== */
+.ecat-edit-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* ===== BUTTONS ===== */
+.ecat-edit-btn-primary {
+    background: linear-gradient(135deg, #facc15, #eab308);
+    color: #000;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+}
+
+.ecat-edit-btn-secondary {
+    background: #374151;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 576px) {
+    .ecat-edit-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ecat-edit-btn-primary,
+    .ecat-edit-btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 /* SALOON CSS */
 .active_saloon {

@@ -57,12 +57,12 @@
                                     <select name="category" id="category" class="form-select premium-input">
                                         <option value="">Select category</option>
 
-                                        {{-- @foreach ($categories as $category)
+                                        @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"
                                                 {{ old('category', $eatery->category_id) == $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}
                                             </option>
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
 
                                     @error('category')

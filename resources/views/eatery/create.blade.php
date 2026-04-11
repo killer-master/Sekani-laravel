@@ -45,13 +45,13 @@
                                 <div class="col-md-6">
                                     <label for="category" class="form-label premium-label">Category</label>
                                     <select name="category" id="category" class="form-select premium-input">
-                                        <option value="">Select category</option>
+                                        <option value="" selected hidden>Select category</option>
 
-                                        {{-- @foreach ($categories as $category)
+                                        @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}
                                             </option>
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
 
                                     @error('category')

@@ -1,46 +1,66 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
-        <div class="container my-5">
-            <nav class="breadcrumb">
-                <a class="breadcrumb-item" href="{{ route('home.page') }}">Home</a>
-                <a class="breadcrumb-item" href="{{ route('eatery.index') }}">Eatery</a>
-                <a class="breadcrumb-item" href="{{ route('eaterycategory.index') }}">Eatery Category</a>
-                <span class="breadcrumb-item active" aria-current="page">Edit</span>
-            </nav>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                Edit: {{ $category->name }}
-                            </h3>
+<section class="ecat-edit-wrapper">
 
-                            <form action="{{ route('eaterycategory.update', $category->id) }}" method="post" class="mt-5">
-                                @csrf
-                                @method('PATCH')
-                                
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" id=""
-                                        aria-describedby="helpId" value="{{ $category->name }}" />
+    <div class="container ecat-edit-container">
 
-                                    @error('name')
-                                        <small id="helpId" class="text-danger fw-bold"> {{ $message }} </small>
-                                    @enderror
-                                </div>
+        <!-- Breadcrumb -->
+        <nav class="ecat-edit-breadcrumb">
+            <a href="{{ route('home.page') }}">Home</a>
+            <span>/</span>
+            <a href="{{ route('eatery.index') }}">Eatery</a>
+            <span>/</span>
+            <a href="{{ route('eaterycategory.index') }}">Category</a>
+            <span>/</span>
+            <span class="active">Edit</span>
+        </nav>
 
+        <!-- Card -->
+        <div class="ecat-edit-card">
 
-                                <div class="my-4">
-                                    <button class="btn  btn-primary"> Update </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="ecat-edit-header">
+                <h2>Edit Category</h2>
+                <p class="ecat-edit-subtitle">
+                    Updating: <span>{{ $category->name }}</span>
+                </p>
             </div>
 
+            <!-- FORM -->
+            <form action="{{ route('eaterycategory.update', $category->id) }}" method="POST" class="ecat-edit-form">
+                @csrf
+                @method('PATCH')
+
+                <div class="ecat-edit-group">
+                    <label class="ecat-edit-label">Category Name</label>
+
+                    <input 
+                        type="text" 
+                        name="name"
+                        value="{{ $category->name }}"
+                        class="ecat-edit-input"
+                    >
+
+                    @error('name')
+                        <small class="ecat-edit-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="ecat-edit-actions">
+                    <a href="{{ route('eaterycategory.index') }}" class="ecat-edit-btn-secondary">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="ecat-edit-btn-primary">
+                        Update Category
+                    </button>
+                </div>
+
+            </form>
+
         </div>
-    </section>
+    </div>
+
+</section>
 @endsection
