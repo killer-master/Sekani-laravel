@@ -20,9 +20,13 @@ class EateryController extends Controller
      */
     public function index()
     {
-        $eaterys = Eatery::latest()->get();
-        return view('eatery.index', compact('eaterys'));
+        $eateryss = Eatery::latest()->get();
+        // return view('eatery.index', compact('eaterys'));
         
+        $eaterys = Eatery::with('category')->get()->groupBy('category_id');
+        $categories = EateryCategory::all();
+
+    return view('eatery.index', compact('eaterys', 'categories', 'eateryss'));
     }
 
     /**

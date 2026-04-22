@@ -34,7 +34,7 @@
                 </a>
             </div>
         </div>
-        
+
 
         @php
             use Illuminate\Support\Str;
@@ -46,7 +46,7 @@
         </div>
 
         <div class="row g-4">
-            @forelse($eaterys as $eatery)
+            @forelse($eateryss as $eatery)
                 <div class="col-sm-6 col-lg-4 col-xl-3">
                     <div class="card eatery-card border-0 rounded-4 h-100 overflow-hidden premium-card">
 
@@ -55,7 +55,6 @@
                             <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
                                 class="card-img-top" alt="{{ $eatery->name }}"
                                 style="height: 230px; object-fit: cover;">
-
                             {{-- Overlay --}}
                             <div class="image-overlay"></div>
 
@@ -85,12 +84,13 @@
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center gap-2 pt-2 border-top action-row">
-                                    <a href="{{ route('eatery.edit', $eatery->sku) }}" class="btn premium-btn-warning w-100">
+                                    <a href="{{ route('eatery.edit', $eatery->sku) }}"
+                                        class="btn premium-btn-warning w-100">
                                         Edit
                                     </a>
 
-                                    <form action="{{ route('eatery.destroy', $eatery->sku) }}"
-                                        method="post" class="w-100 delete-form">
+                                    <form action="{{ route('eatery.destroy', $eatery->sku) }}" method="post"
+                                        class="w-100 delete-form">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn premium-btn-danger w-100 delete-form">
@@ -114,6 +114,8 @@
                 </div>
             @endforelse
         </div>
+
+        
 
         {{-- Custom Styling --}}
         <style>

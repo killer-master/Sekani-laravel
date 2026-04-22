@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Eatery;
+use App\Models\EateryCategory;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -17,9 +18,12 @@ class PageController extends Controller
     }
     public function eatry()
     {
-        $eaterys = Eatery::latest()->get(); 
+        // $eaterys = Eatery::latest()->get();
+        
+        $eaterys = Eatery::with('category')->get()->groupBy('category_id');
+        $categories = EateryCategory::all();
 
-        return view('eatry', compact('eaterys'));
+        return view('eatry', compact('eaterys', 'categories'));
     }
     public function game()
     {

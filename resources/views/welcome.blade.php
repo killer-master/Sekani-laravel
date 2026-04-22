@@ -35,14 +35,14 @@
                                 </div>
                             </a> -->
 
-                <div class="fs-6 row container hero_emoji" style="color: var(--primary)">
-                    <div class="col-6 col-lg-4">
+                <div class="fs-6 row container hero_emoji text-lg-end text-start">
+                    <div class="col-12 col-lg-4">
                         <i class="fs-6 fa-solid fa-circle-check"></i> 9+ Premium services
                     </div>
-                    <div class="col-6 col-lg-4">
+                    <div class="col-12 col-lg-4">
                         <i class="fa-solid fa-clock"></i> Open Daily
                     </div>
-                    <div class="col-6 col-lg-4">
+                    <div class="col-12 col-lg-4">
                         <i class="fa-solid fa-star"></i> world-class Experience
                     </div>
                 </div>
@@ -60,12 +60,12 @@
             our service
         </div>
         <div class="fs-1 text-center text-white text-capitalize fw-bold">
-            9+ premium services, <span style="color: var(--primary);">one destination</span>
+            9+ premium services, <span style="color: var(--sekani-color);">one destination</span>
         </div>
         <p class="text-center text-white fs-5">Everything you need for the perfect day, night, or weekend getaway</p>
 
         <div class="row g-2 py-5">
-            <a href="{{ route('eatry.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('eatry.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-eat">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-utensils fs-2 index-moji-hover pe-5"></i>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('vip.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('vip.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-vip">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-martini-glass fs-2 index-moji-hover pe-5"></i>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('saloon.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('saloon.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-sal">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-scissors fs-2 index-moji-hover pe-5"></i>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('pool.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('pool.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-poo">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-water-ladder fs-2 index-moji-hover pe-5"></i>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('planning.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('planning.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-pla">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-champagne-glasses fs-2 index-moji-hover pe-5"></i>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('game.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('game.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-gam">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-gamepad fs-2 index-moji-hover pe-5"></i>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('fitness.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('fitness.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-fit">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-dumbbell fs-2 index-moji-hover pe-5"></i>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('rooftop.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('rooftop.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-roo">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-hotel fs-2 index-moji-hover pe-5"></i>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('pastry.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover">
+            <a href="{{ route('pastry.page') }}" class="col-6 col-lg-3 text-decoration-none index-services-hover index-services-hover-pas">
                 <div class="container py-3 ">
                     <div class="">
                         <i class="fa-solid fa-cake-candles fs-2 index-moji-hover pe-5"></i>
@@ -190,12 +190,12 @@
     <section style="background-color: black;">
         <div class="container-fluid row py-5">
             <div class="col-12 col-lg-6">
-                <div style="text-transform: uppercase; color: #ddab2c;">
+                <div style="text-transform: uppercase; color: var(--sekani-color);">
                     the sekani empire
                 </div> <br>
                 <div class="" style="text-transform: uppercase; color: white; font-size: 2rem;">
                     where luxury meets <br>
-                    <span style="color: #ddab2c;">
+                    <span style="color: var(--sekani-color);">
                         endless possibilities
                     </span>
                 </div>
@@ -279,7 +279,7 @@
     <section class="container-fluid py-5" style="background-color: black;">
         <div class="text-center" style="color: white;">
             <P class="h1 text-capitalize">
-                ready to experiences <span style="color: #ddab2c;">SEKANI</span>?
+                ready to experiences <span style="color: var(--sekani-color);">SEKANI</span>?
             <p>
             </P>
             Join us today and discover why SEKANI is the ultimate destination for luxury, enterainment, and relaxation
@@ -287,39 +287,33 @@
         </div>
         <div class="container-fluid">
             <div class="row g-3">
-                <div class="col-12 col-lg-4 text-center"
-                    style="background-color: #1f1f1f4c; border-radius: 10px; border: #ddab2c1a 2px solid;">
-                    <i class="fa-solid fa-calendar-check moji mt-5 pe-5" style="color: #ddab2c;"></i>
-                    <p class="h2 white">Make a reservation</p>
+                <div class="col-12 col-lg-6 text-center experince-card">
+                    <i class="fa-solid fa-calendar-check moji mt-5 pe-5"></i>
+                    <h2>Make a reservation</h2>
                     <p class="white">Book your spot for dining, lounge, lodging, or events</p>
-                    <a href="#" class="">
-                        <button class="btn fw-bold text-capitalize white px-5 mb-3"
-                            style="border: solid; color: #ddab2c; background-color: white; border-radius: 10px;">
-                            book now <i class="fa-solid fa-arrow-right" style="color: #ddab2c;"></i>
+                    <a href="{{ route('eatry.page') }}" class="">
+                        <button class="btn fw-bold text-capitalize white px-5 mb-3 experince-card-button">
+                            book now <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </a>
                 </div>
-                <div class="col-12 col-lg-4 text-center"
-                    style="background-color: #1f1f1f4c; border-radius: 10px; border: #ddab2c1a 2px solid;">
-                    <i class="fa-solid fa-images moji mt-5 pe-5" style="color: #ddab2c;"></i>
-                    <p class="h2 white">Explore Our Gallery</p>
+                {{-- <div class="col-12 col-lg-4 text-center experince-card">
+                    <i class="fa-solid fa-images moji mt-5 pe-5"></i>
+                    <h2 class="h2 white">Explore Our Gallery</h2>
                     <p class="white">See photos and video of our stunning facilities</p>
                     <a href="#" class="">
-                        <button class="btn fw-bold text-capitalize white px-5 mb-3"
-                            style="border: solid; color: #ddab2c; background-color: white; border-radius: 10px;">
-                            veiw now <i class="fa-solid fa-arrow-right" style="color: #ddab2c;"></i>
+                        <button class="btn fw-bold text-capitalize white px-5 mb-3 experince-card-button">
+                            veiw now <i class="fa-solid fa-arrow-right" style="color: var(--sekani-color);"></i>
                         </button>
                     </a>
-                </div>
-                <div class="col-12 col-lg-4 text-center"
-                    style="background-color: #1f1f1f4c; border-radius: 10px; border: #ddab2c1a 2px solid;">
-                    <i class="fa-solid fa-phone moji mt-5 pe-5" style="color: #ddab2c;"></i>
-                    <p class="h2 white">Get in Touch</p>
+                </div> --}}
+                <div class="col-12 col-lg-6 text-center experince-card">
+                    <i class="fa-solid fa-phone moji mt-5 pe-5"></i>
+                    <h2 class="">Get in Touch</h2>
                     <p class="white">Have questions? We're here to help you plan</p>
-                    <a href="#" class="">
-                        <button class="btn fw-bold text-capitalize white px-5 mb-3"
-                            style="border: solid; color: #ddab2c; background-color: white; border-radius: 10px;">
-                            contact us <i class="fa-solid fa-arrow-right" style="color: #ddab2c;"></i>
+                    <a href="{{ route('contact.page') }}" class="">
+                        <button class="btn fw-bold text-capitalize white px-5 mb-3 experince-card-button">
+                            contact us <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </a>
                 </div>

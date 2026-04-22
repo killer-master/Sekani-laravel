@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <section class="premium-eatery-page">
 
         <section class="eatry_hero">
@@ -58,7 +57,8 @@
                 <div class="row g-4">
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Swallow & Soup" class="card-img-top premium-card-img">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Swallow & Soup"
+                                class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Swallow & Soup</h3>
                                 <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
@@ -77,7 +77,8 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Protein" class="card-img-top premium-card-img">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Protein"
+                                class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Protein</h3>
                                 <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
@@ -96,7 +97,8 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Pasta" class="card-img-top premium-card-img">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Pasta"
+                                class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Pasta</h3>
                                 <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
@@ -115,7 +117,8 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Beverage" class="card-img-top premium-card-img">
+                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Beverage"
+                                class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Beverage</h3>
                                 <p class="text-muted-light mb-3">Authentic Nigerian flavor</p>
@@ -148,54 +151,74 @@
                     <p class="section-subtitle">Delicious meals made fresh for you</p>
                 </div>
 
-                <div class="d-flex justify-content-end mb-4">
-                    <h4 class="text-capitalize fw-bold accent-text">Pasta</h4>
-                </div>
-
                 <div class="row g-4">
-                    @forelse($eaterys as $eatery)
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="card eatery-card premium-food-card border-0 rounded-4 h-100 overflow-hidden">
+                    @foreach ($categories as $category)
+                        {{-- CATEGORY TITLE --}}
+                        <div class="w-100 mt-5 mb-3">
+                            <h3 class="fw-bold text-end pb-2" style="color: orangered;">
+                                {{ $category->name }}
+                            </h3>
+                            <div class="text-end">
+                                <hr class="mb-4 mt-0 d-inline-block mx-auto end-0"
+                                style="width: 13rem; background-color: wheat; height: 4px" />
+                            </div>
+                        </div>
 
-                                <div class="position-relative image-wrap">
-                                    <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
-                                        class="card-img-top" alt="{{ $eatery->name }}"
-                                        style="height: 230px; object-fit: cover;">
+                        <div class="row g-4">
+                            @forelse($eaterys[$category->id] ?? [] as $eatery)
+                                <div class="col-sm-6 col-lg-4 col-xl-3">
+                                    <div class="card eatery-card border-0 rounded-4 h-100 overflow-hidden premium-card">
 
-                                    <div class="image-overlay"></div>
+                                        {{-- Eatery Image --}}
+                                        <div class="position-relative image-wrap">
+                                            <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
+                                                class="card-img-top" alt="{{ $eatery->name }}"
+                                                style="height: 230px; object-fit: cover;">
 
-                                    <span class="badge premium-badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
-                                        {{ $eatery->category->name ?? 'Uncategorized' }}
-                                    </span>
-                                </div>
+                                            {{-- Overlay --}}
+                                            <div class="image-overlay"></div>
 
-                                <div class="card-body d-flex flex-column p-4 premium-food-body">
-                                    <h5 class="fw-bold text-white mb-2">{{ $eatery->name }}</h5>
+                                            {{-- Category Badge --}}
+                                            <span
+                                                class="badge premium-badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+                                                {{ $eatery->category->name ?? 'Uncategorized' }}
+                                            </span>
+                                        </div>
 
-                                    <p class="text-light-emphasis small mb-3">
-                                        {{ Str::limit($eatery->description, 80) }}
-                                    </p>
+                                        {{-- Eatery Content --}}
+                                        <div class="card-bodyy d-flex flex-column p-4" style="background-color: #212529">
+                                            <div class="mb-3">
+                                                <h5 class="fw-bold mb-2 card-title-custom" style="color: wheat;">{{ $eatery->name }}</h5>
 
-                                    <div class="mt-auto d-flex justify-content-between align-items-center">
-                                        <h5 class="fw-bold text-white mb-0">₦{{ number_format($eatery->price, 2) }}</h5>
+                                                <p class="small mb-0 card-desc" style="color: wheat;">
+                                                    {{ Str::limit($eatery->description, 80) }}
+                                                </p>
+                                            </div>
 
-                                        <a href="#" class="btn premium-btn-primary-sm rounded-pill px-4">
+                                            <div class="mt-auto">
+                                                <div class="d-flex justify-content-between align-items-center text-white mb-3">
+                                                    <h5 class="fw-bold price-tag mb-0" style="color: wheat;">
+                                                        ₦{{ number_format($eatery->price, 2) }}</h5>
+
+                                                    <a href="#" class="btn premium-btn-primary-sm rounded-pill px-4">
                                             Add
                                         </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @empty
+                                <div class="col-12">
+                                    <div class="empty-state text-center rounded-4 shadow-sm p-5">
+                                        <h5 class="fw-bold mb-2 text-white">No menu items yet</h5>
+                                        <p class="text-light-emphasis mb-0">Fresh dishes will appear here soon.</p>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
-                    @empty
-                        <div class="col-12">
-                            <div class="empty-state text-center rounded-4 shadow-sm p-5">
-                                <h5 class="fw-bold mb-2 text-white">No menu items yet</h5>
-                                <p class="text-light-emphasis mb-0">Fresh dishes will appear here soon.</p>
-                            </div>
-                        </div>
-                    @endforelse
+                    @endforeach
                 </div>
-            </div>
         </section>
 
         <style>

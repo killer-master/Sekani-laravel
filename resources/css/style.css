@@ -1,5 +1,5 @@
 :root {
-    --primary: #ddab2c;
+    /* --primary: #ddab2c; */
     --secondary: #1f1f1f4c;
     --white: #ffffff;
     --dark: #212529;
@@ -13,8 +13,23 @@
     --cyan: #22c3b6;
     --darkblue: #0a4976;
     --brown: #c68039;
+    
+    --primary: #f35720;
+    --primary-soft: #f3572015;
+    --dark: #0d0d0d;
+    --dark-2: #161616;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+
+    --radius: 14px;
+    --transition: all 0.3s ease;
+    
+    
+    /* --sekani-color: #ec1313; */
+    --sekani-color: #ff5a0a;  
     /* --background: 0 0% 4%; */
 }
+
 
 html {
     scroll-behavior: smooth;
@@ -34,6 +49,9 @@ html {
 
 .footer-logo:hover {
     color: #ddab2c;
+}
+.sekani-color{
+    color: var(--sekani-color);
 }
 
 
@@ -106,35 +124,29 @@ html {
 }
 
 .button-index-service {
-    color: #ddab2c;
+    color: var(--sekani-color);
     background-color: #00000000;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(10px);
     border: solid 1px;
-    border-radius: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    border-radius: 14px;
+    padding: 12px 24px;
+    transition: var(--transition);
 }
 
 .button-index-service:hover {
-    color: #ddab2ca8;
-    background-color: #00000000;
-    backdrop-filter: blur(100px);
-    border: solid 1px;
-    border-radius: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    color: white;
+    background-color: #f35820d3;
+    backdrop-filter: blur(10px);
+    transform: translateY(-3px);
     box-shadow: 0 0 5px white, 0 0 10px white
 }
-
 .index-hero {
     background-image: url('/public/assets/images/sekani-hero.jpg');
     background-size: cover;
-    /* background-color: #00000094; */
     height: 100dvh;
     width: 100%;
     display: flex;
     position: absolute;
-    /* margin-bottom: 100dvh; */
 }
 
 .color-index {
@@ -186,19 +198,12 @@ html {
     background-color: #ddab2c;
     border: black solid 2px;
 }
-
-/* @media screen and (max-width: 992px) {
-    .hero{
-    padding-top: 6rem;
-    font-size: 5rem; 
-    }
-} */
 .hero>.container>span {
     color: #ddab2c;
 }
 
 .hero-color {
-    color: #ddab2c;
+    color: var(--sekani-color);
 }
 
 .hero>a>button {
@@ -216,14 +221,23 @@ html {
 
 .hero_emoji {
     display: flex;
+    color: var(--sekani-color);
     /* justify-content: space-around; */
 }
 
+.index-empire {
+    color: black;
+    border: solid;
+    padding: 1rem;
+    background-color: var(--sekani-color);
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
 .empire {
     color: black;
     border: solid;
     padding: 1rem;
-    background-color: #ddab2c;
+    background-color: var(--sekani-color);
     border-radius: 10px;
     font-size: 1.5rem;
 }
@@ -231,6 +245,12 @@ html {
 .image {
     position: relative;
     top: 20%;
+}
+.image>img {
+    transition: var(--transition);
+}
+.image img:hover {
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 576px) {
@@ -241,47 +261,27 @@ html {
 }
 
 .open>div {
-    color: white;
+    color: white; 
 }
 
-.open>div:nth-child(1) {
+.open>div{
     background-color: #1f1f1f4c;
     border-radius: 15px;
-    /* box-shadow: #ddab2c36 -5px -5px 100px -0px inset; */
-    color: var(--primary);
-    border: solid 2px #ddab2c;
+    box-shadow: #f3572036 -5px -5px 100px -0px inset;
+    color: var(--sekani-color);
+    border: solid 2px var(--sekani-color);
 }
-
-.open>div:nth-child(2) {
-    background-color: #1f1f1f4c;
-    border-radius: 15px;
-    /* box-shadow: #ddab2c36 -5px -5px 80px -0px inset; */
-    color: var(--primary);
-    border: solid 2px #ddab2c;
-}
-
-.open>div:nth-child(3) {
-    background-color: #1f1f1f4c;
-    border-radius: 15px;
-    /* box-shadow: #ddab2c36 -5px -5px 100px -0px inset; */
-    color: var(--primary);
-    border: solid 2px #ddab2c;
-}
-
-.open>div:nth-child(4) {
-    background-color: #1f1f1f4c;
-    border-radius: 15px;
-    /* box-shadow: #ddab2c36 -5px -5px 100px -0px inset; */
-    color: var(--primary);
-    border: solid 2px #ddab2c;
+.open>div:hover{
+    transform: translateY(-5px);
 }
 
 .moji {
     border: solid;
-    padding: 1.5rem;
+    padding: 1.5rem; 
     border-radius: 50%;
     font-size: 1.5rem;
     background-color: white;
+    color: var(--sekani-color);
 }
 
 .white {
@@ -311,9 +311,9 @@ html {
 }
 
 .index-moji-hover {
-    color: var(--primary);
+    color: var(--sekani-color);
     border-radius: 0.5rem;
-    background-color: #ddab2c1a;
+    background-color: #f357201a;
     padding: 1rem;
 }
 
@@ -326,26 +326,26 @@ html {
 .index-services-hover {
     background-color: #1f1f1f4c;
     border-radius: 1rem;
-    border: #ddab2c1a 2px solid;
+    border: #f357201a 2px solid;
+    transition: var(--transition);
 }
 
 .index-services-hover:hover {
-    box-shadow: #ddab2c36 -5px -5px 30px -0px inset, 0 0 20px #ddab2c36;
-    background-image: url('/public/assets/images/hero.jpg');
+    box-shadow: #f3572036 -5px -5px 30px -0px inset, 0 0 20px #f3572036;
+    transform: translateY(-8px);
     background-size: cover;
 
-    /* opacity: 0.5; */
     .index-moji-hover {
-        animation: scale 0.5s ease normal both;
-        background-color: #1f1f1f4c;
+        animation: scale 0.5s ease forwards ;
+        background: #1f1f1f4c;
         color: black;
     }
 
     .index-text-hover {
-        color: #ddab2c;
+        color: var(--sekani-color);
+        font-weight: 900;
     }
 }
-
 @keyframes scale {
     from {
         transform: scale(1);
@@ -355,6 +355,36 @@ html {
         transform: scale(1.5);
     }
 }
+.index-services-hover-eat:hover{
+    background-image: url('/public/assets/images/food.jpg');
+}
+.index-services-hover-vip:hover{
+    background-image: url('/public/assets/images/vip2.jpg');
+}
+.index-services-hover-sal:hover{
+    background-image: url('/public/assets/images/sekani_saloon.jpg');
+}
+.index-services-hover-poo:hover{
+    background-image: url('/public/assets/images/pool.jpg');
+    background-size: cover;
+}
+.index-services-hover-pla:hover{
+    background-image: url('/public/assets/images/plan1.jpg');
+}
+.index-services-hover-gam:hover{
+    background-image: url('/public/assets/images/game-hero.jpg');
+}
+.index-services-hover-fit:hover{
+    background-image: url('/public/assets/images/hero-gym.jpg');
+}
+.index-services-hover-roo:hover{
+    background-image: url('/public/assets/images/roof-hero.jpg');
+}
+.index-services-hover-pas:hover{
+    background-image: url('/public/assets/images/bake-hero.jpg');
+}
+
+
 
 .serice_sticker {
     padding-bottom: 5rem;
@@ -378,6 +408,45 @@ html {
         transition-duration: 1s;
         transition-timing-function: linear;
     }
+}
+.experince-card {
+    background-color: #1f1f1f4c; 
+    border-radius: 10px; 
+    border: #f357201a 2px solid;
+}
+.experince-card-button{
+    border: solid; 
+    color: var(--sekani-color); 
+    background-color: white; 
+    border-radius: 10px;
+}
+.experince-card:hover {
+    animation: scale-up 0.3s linear normal forwards;
+    transition: var(--transition);
+}
+.experince-card>h2 {
+    color: white;
+}
+.experince-card:hover>h2 {
+    color: var(--sekani-color);
+    transition: var(--transition);
+}
+.experince-card-button>i:hover{
+    color: white;
+}
+.experince-card-button:hover{
+    color: white; 
+    border: solid white;
+    background-color: var(--sekani-color);
+    animation: scale 0.3s linear normal forwards;
+}
+@keyframes scale {
+    from{transform: scale(1);}
+    to{transform: scale(3);}
+}
+@keyframes scale-up {
+    from{transform: translateY(0);}
+    to{transform: translateY(-15px);}
 }
 
 
@@ -426,7 +495,7 @@ html {
 }
 
 .activee {
-    color: orangered;
+    color: var(--sekani-color);
 }
 
 .button_eatry:hover {
@@ -438,7 +507,7 @@ html {
 }
 
 .background_orange {
-    background-color: orangered;
+    background-color: var(--sekani-color);
 }
 
 .eatery-card {
@@ -470,7 +539,7 @@ html {
 /* ===== Container ===== */
 .ecat-container {
     max-width: 1000px;
-}
+} 
 
 /* ===== Breadcrumb ===== */
 .ecat-breadcrumb {

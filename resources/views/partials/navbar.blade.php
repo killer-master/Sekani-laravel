@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand {{ request()->is('/') ? 'activee' : '' }}" href="{{ route('home.page') }}"><img
-                        src="{{ asset('assets/images/photo_2025-11-29_19-13-15.jpg') }}" width="75" alt="logo"></a>
+                        src="{{ asset('assets/images/sekani-logo.jpg') }}" width="100" alt="logo" style="border-radius: 10px"></a>
 
                 <button class="navbar-toggler d-lg-none background_orange" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -50,7 +50,7 @@
                                     <a class="dropdown-item text-center wheat {{ request()->is('planning') ? 'activee' : '' }}"
                                         href="{{ route('planning.page') }}">Catering and event
                                         planning</a>
-                                    <hr class="wheat">
+                                    <hr class="wheat ">
                                     <a class="dropdown-item text-center wheat {{ request()->is('rooftop') ? 'activee' : '' }}"
                                         href="{{ route('rooftop.page') }}">Rooftop Lounge</a>
                                     <hr class="wheat">
@@ -62,7 +62,7 @@
                         </ul>
 
                     </ul>
-                    <ul class="navbar-nav mt-2 mt-lg-0 d-flex flex-wrap text-center">
+                    <ul class="navbar-nav mt-2 mt-lg-0 d-flex flex-wrap text-center" style="border-radius: 2rem">
 
                         <li class="nav-item">
                             {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Cart') }}</a> --}}
@@ -104,14 +104,19 @@
 
                                     @if (Auth::user()->role == 'admin')
                                         <a href="{{ route('eatery.index') }}" class="dropdown-item wheat"> Eatery </a>
+                                        <hr class="wheat">
                                         <a href="{{ route('eaterycategory.index') }}" class="dropdown-item wheat"> Eatery Category </a>
-                                        <a href="#" class="dropdown-item wheat"> Gallery </a>
+                                        <hr class="wheat">
+                                        {{-- <a href="#" class="dropdown-item wheat"> Gallery </a>
                                         <a href="#" class="dropdown-item wheat"> Products </a>
-                                        <a href="#" class="dropdown-item wheat"> Orders </a>
-                                    @else
-                                        <a href="#" class="dropdown-item wheat">My Cart </a>
-                                        <a href="#" class="dropdown-item wheat">My Orders </a>
+                                        <a href="#" class="dropdown-item wheat"> Orders </a> --}}
                                         <a href="{{ route('profile.edit') }}" class="dropdown-item wheat">Profile</a>
+                                        <hr class="wheat">
+                                    @else
+                                        {{-- <a href="#" class="dropdown-item wheat">My Cart </a>
+                                        <a href="#" class="dropdown-item wheat">My Orders </a> --}}
+                                        <a href="{{ route('profile.edit') }}" class="dropdown-item wheat">Profile</a>
+                                        <hr class="wheat">
                                     @endif
 
 
@@ -120,6 +125,7 @@
                                                  document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <hr class="wheat">
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none wheat">

@@ -67,7 +67,7 @@
                         your best self
                     </div>
                 </div>
-                <div class="row pb-5">
+                <div class="row pb-5 g-3">
                     <div class="col-12 col-lg-4">
                         <div class="card container saloon_hover" style="border-radius: 1rem; border: solid 2px">
                             <div class="row">

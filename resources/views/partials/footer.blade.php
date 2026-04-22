@@ -43,14 +43,13 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <a href="{{ route('home.page') }}">
-                            <img src="assets/images/photo_2025-11-29_19-13-15.jpg"
-                                style="width: 8rem;border-radius: 1rem;"> <br>
+                            <img src="{{ asset('assets/images/sekani-logo.jpg') }}"
+                                style="width: 12rem; border-radius: 1rem;"> <br>
                         </a>
                         <!-- <h1 class="text-uppercase fw-bold"> <span style="color: blue;">se</span><span
                                     style="color: red;">ka</span><span style="color: blue;">ni</span></h1> -->
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: black; height: 2px" />
-                        <p>
+                        
+                        <p class="text-white pt-5">
                             A place where everything meets.
                         </p>
                     </div>
@@ -59,12 +58,12 @@
                     <!-- Grid column -->
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
-                        <h6 class="text-uppercase fw-bold" style="color: #ddab2c;">services</h6>
+                        <h6 class="text-uppercase fw-bold" style="color: var(--sekani-color);">services</h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto"
                             style="width: 60px; background-color: black; height: 2px" />
                         <p>
                             <a href="{{ route('eatry.page') }}"
-                                class="text-decoration-none text-capitalize footer-hover">eartry</a>
+                                class="text-decoration-none text-capitalize footer-hover">Eatery</a>
                         </p>
                         <p>
                             <a href="{{ route('vip.page') }}"
@@ -109,7 +108,7 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
-                        <h6 class="text-uppercase fw-bold" style="color: #ddab2c;">Useful links</h6>
+                        <h6 class="text-uppercase fw-bold" style="color: var(--sekani-color);">Useful links</h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto"
                             style="width: 60px; background-color: black; height: 2px" />
                         <p>
