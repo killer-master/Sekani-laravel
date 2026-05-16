@@ -200,8 +200,8 @@
                                                     <h5 class="fw-bold price-tag mb-0" style="color: wheat;">
                                                         ₦{{ number_format($eatery->price, 2) }}</h5>
 
-                                                    <a href="#" class="btn premium-btn-primary-sm rounded-pill px-4">
-                                            Add
+                                                    <a href="{{ route('eateryView.page', $eatery->sku) }}" class="btn premium-btn-primary-sm rounded-pill px-4">
+                                            Veiw
                                         </a>
                                                 </div>
                                             </div>

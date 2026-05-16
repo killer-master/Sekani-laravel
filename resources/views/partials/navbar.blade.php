@@ -66,19 +66,19 @@
 
                         <li class="nav-item">
                             {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Cart') }}</a> --}}
-                            {{-- <a href="#" class="nav-link position-relative me-3">
+                            <a href="{{ route('cart.index') }}" class="nav-link position-relative me-3">
                                 <i class="fa-solid fa-shopping-cart text-white"></i>
                                 @auth
                                     <span
                                         class="position-absolute top-0 start-100 translate-middle text-bg-danger d-grid border border-light rounded-circle"
                                         style="width: 20px; height: 20px; place-content: center;">
                                         <small class="small" style="font-size: 10px;">
-                                            {{ Auth::user()->count() }}
+                                            {{-- {{ Auth::user()->cartItems->count() }} --}}
                                         </small>
                                     </span>
                                 @endauth
                             </a>
-                        </li> --}}
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

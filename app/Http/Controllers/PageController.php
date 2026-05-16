@@ -57,4 +57,12 @@ class PageController extends Controller
     {
         return view('vip');
     }
+    public function eateryView($sku)
+    {
+        // $eateryview = EateryCategory::all();
+        $eateryview = Eatery::where('sku', $sku)->firstOrFail();
+        // $eateryview = Eatery::all();
+
+        return view('eateryView', compact('eateryview'));
+    }
 }

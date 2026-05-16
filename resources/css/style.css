@@ -13,7 +13,7 @@
     --cyan: #22c3b6;
     --darkblue: #0a4976;
     --brown: #c68039;
-    
+
     --primary: #f35720;
     --primary-soft: #f3572015;
     --dark: #0d0d0d;
@@ -23,10 +23,10 @@
 
     --radius: 14px;
     --transition: all 0.3s ease;
-    
-    
+
+
     /* --sekani-color: #ec1313; */
-    --sekani-color: #ff5a0a;  
+    --sekani-color: #ff5a0a;
     /* --background: 0 0% 4%; */
 }
 
@@ -50,7 +50,8 @@ html {
 .footer-logo:hover {
     color: #ddab2c;
 }
-.sekani-color{
+
+.sekani-color {
     color: var(--sekani-color);
 }
 
@@ -140,6 +141,7 @@ html {
     transform: translateY(-3px);
     box-shadow: 0 0 5px white, 0 0 10px white
 }
+
 .index-hero {
     background-image: url('/public/assets/images/sekani-hero.jpg');
     background-size: cover;
@@ -198,6 +200,7 @@ html {
     background-color: #ddab2c;
     border: black solid 2px;
 }
+
 .hero>.container>span {
     color: #ddab2c;
 }
@@ -233,6 +236,7 @@ html {
     border-radius: 10px;
     font-size: 1.5rem;
 }
+
 .empire {
     color: black;
     border: solid;
@@ -246,9 +250,11 @@ html {
     position: relative;
     top: 20%;
 }
+
 .image>img {
     transition: var(--transition);
 }
+
 .image img:hover {
     transform: scale(1.05);
 }
@@ -261,23 +267,24 @@ html {
 }
 
 .open>div {
-    color: white; 
+    color: white;
 }
 
-.open>div{
+.open>div {
     background-color: #1f1f1f4c;
     border-radius: 15px;
     box-shadow: #f3572036 -5px -5px 100px -0px inset;
     color: var(--sekani-color);
     border: solid 2px var(--sekani-color);
 }
-.open>div:hover{
+
+.open>div:hover {
     transform: translateY(-5px);
 }
 
 .moji {
     border: solid;
-    padding: 1.5rem; 
+    padding: 1.5rem;
     border-radius: 50%;
     font-size: 1.5rem;
     background-color: white;
@@ -336,7 +343,7 @@ html {
     background-size: cover;
 
     .index-moji-hover {
-        animation: scale 0.5s ease forwards ;
+        animation: scale 0.5s ease forwards;
         background: #1f1f1f4c;
         color: black;
     }
@@ -346,6 +353,7 @@ html {
         font-weight: 900;
     }
 }
+
 @keyframes scale {
     from {
         transform: scale(1);
@@ -355,32 +363,41 @@ html {
         transform: scale(1.5);
     }
 }
-.index-services-hover-eat:hover{
+
+.index-services-hover-eat:hover {
     background-image: url('/public/assets/images/food.jpg');
 }
-.index-services-hover-vip:hover{
+
+.index-services-hover-vip:hover {
     background-image: url('/public/assets/images/vip2.jpg');
 }
-.index-services-hover-sal:hover{
+
+.index-services-hover-sal:hover {
     background-image: url('/public/assets/images/sekani_saloon.jpg');
 }
-.index-services-hover-poo:hover{
+
+.index-services-hover-poo:hover {
     background-image: url('/public/assets/images/pool.jpg');
     background-size: cover;
 }
-.index-services-hover-pla:hover{
+
+.index-services-hover-pla:hover {
     background-image: url('/public/assets/images/plan1.jpg');
 }
-.index-services-hover-gam:hover{
+
+.index-services-hover-gam:hover {
     background-image: url('/public/assets/images/game-hero.jpg');
 }
-.index-services-hover-fit:hover{
+
+.index-services-hover-fit:hover {
     background-image: url('/public/assets/images/hero-gym.jpg');
 }
-.index-services-hover-roo:hover{
+
+.index-services-hover-roo:hover {
     background-image: url('/public/assets/images/roof-hero.jpg');
 }
-.index-services-hover-pas:hover{
+
+.index-services-hover-pas:hover {
     background-image: url('/public/assets/images/bake-hero.jpg');
 }
 
@@ -409,44 +426,63 @@ html {
         transition-timing-function: linear;
     }
 }
+
 .experince-card {
-    background-color: #1f1f1f4c; 
-    border-radius: 10px; 
+    background-color: #1f1f1f4c;
+    border-radius: 10px;
     border: #f357201a 2px solid;
 }
-.experince-card-button{
-    border: solid; 
-    color: var(--sekani-color); 
-    background-color: white; 
+
+.experince-card-button {
+    border: solid;
+    color: var(--sekani-color);
+    background-color: white;
     border-radius: 10px;
 }
+
 .experince-card:hover {
     animation: scale-up 0.3s linear normal forwards;
     transition: var(--transition);
 }
+
 .experince-card>h2 {
     color: white;
 }
+
 .experince-card:hover>h2 {
     color: var(--sekani-color);
     transition: var(--transition);
 }
-.experince-card-button>i:hover{
+
+.experince-card-button>i:hover {
     color: white;
 }
-.experince-card-button:hover{
-    color: white; 
+
+.experince-card-button:hover {
+    color: white;
     border: solid white;
     background-color: var(--sekani-color);
     animation: scale 0.3s linear normal forwards;
 }
+
 @keyframes scale {
-    from{transform: scale(1);}
-    to{transform: scale(3);}
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(3);
+    }
 }
+
 @keyframes scale-up {
-    from{transform: translateY(0);}
-    to{transform: translateY(-15px);}
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
 }
 
 
@@ -539,7 +575,7 @@ html {
 /* ===== Container ===== */
 .ecat-container {
     max-width: 1000px;
-} 
+}
 
 /* ===== Breadcrumb ===== */
 .ecat-breadcrumb {
@@ -561,7 +597,7 @@ html {
     background: #111827;
     border-radius: 16px;
     padding: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== Header ===== */
@@ -731,12 +767,30 @@ html {
     color: #facc15;
 }
 
+.premium-breadcrumb {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(17, 24, 39, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.premium-breadcrumb .breadcrumb-item a {
+    text-decoration: none;
+    color: #6b7280;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.premium-breadcrumb .breadcrumb-item a:hover {
+    color: #111827;
+}
+
 /* ===== CARD ===== */
 .ecat-edit-card {
     background: #111827;
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== HEADER ===== */
@@ -2250,10 +2304,3 @@ html {
     border-radius: 1rem;
     background-color: #5c3a23a6;
 }
-
-
-
-
-
-
-
