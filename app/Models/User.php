@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+     public function cartItems()
+    {
+        return $this->hasMany(Cart::class, 'user_id')->where('status', 'added')->latest();
+    }
 }

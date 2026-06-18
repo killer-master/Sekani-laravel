@@ -160,7 +160,7 @@
                             </h3>
                             <div class="text-end">
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto end-0"
-                                style="width: 13rem; background-color: wheat; height: 4px" />
+                                    style="width: 13rem; background-color: wheat; height: 4px" />
                             </div>
                         </div>
 
@@ -188,7 +188,8 @@
                                         {{-- Eatery Content --}}
                                         <div class="card-bodyy d-flex flex-column p-4" style="background-color: #212529">
                                             <div class="mb-3">
-                                                <h5 class="fw-bold mb-2 card-title-custom" style="color: wheat;">{{ $eatery->name }}</h5>
+                                                <h5 class="fw-bold mb-2 card-title-custom" style="color: wheat;">
+                                                    {{ $eatery->name }}</h5>
 
                                                 <p class="small mb-0 card-desc" style="color: wheat;">
                                                     {{ Str::limit($eatery->description, 80) }}
@@ -196,13 +197,25 @@
                                             </div>
 
                                             <div class="mt-auto">
-                                                <div class="d-flex justify-content-between align-items-center text-white mb-3">
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center text-white mb-3">
                                                     <h5 class="fw-bold price-tag mb-0" style="color: wheat;">
                                                         ₦{{ number_format($eatery->price, 2) }}</h5>
 
-                                                    <a href="{{ route('eateryView.page', $eatery->sku) }}" class="btn premium-btn-primary-sm rounded-pill px-4">
-                                            Veiw
-                                        </a>
+                                                    <a href="{{ route('eateryView.page', $eatery->sku) }}"
+                                                        class="btn premium-btn-primary-sm rounded-pill px-4">
+                                                        Veiw
+                                                    </a>
+                                                </div>
+                                                <div class="text-center">
+                                                    <form action="{{ route('cart.store') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $eatery->id }}"
+                                                            name="eatery">
+                                                        <button class="btn premium-btn-primary-sm rounded-pill px-4 wheat">
+                                                            +<i class="fa-solid fa-cart-shopping"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

@@ -22,6 +22,7 @@ class PageController extends Controller
         
         $eaterys = Eatery::with('category')->get()->groupBy('category_id');
         $categories = EateryCategory::all();
+        // $eateryview = Eatery::where('sku', $sku)->firstOrFail();
 
         return view('eatry', compact('eaterys', 'categories'));
     }

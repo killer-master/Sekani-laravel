@@ -10,4 +10,9 @@ class EateryCategory extends Model
         'name',
         'slug',
     ];
+
+    public function eateries()
+    {
+        return $this->hasMany(Eatery::class, 'category_id');
+    }
 }

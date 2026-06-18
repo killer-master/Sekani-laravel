@@ -73,7 +73,7 @@
                                         class="position-absolute top-0 start-100 translate-middle text-bg-danger d-grid border border-light rounded-circle"
                                         style="width: 20px; height: 20px; place-content: center;">
                                         <small class="small" style="font-size: 10px;">
-                                            {{-- {{ Auth::user()->cartItems->count() }} --}}
+                                            {{ Auth::user()->cartItems->count() }}
                                         </small>
                                     </span>
                                 @endauth

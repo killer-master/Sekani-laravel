@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'admin'])->name('dashboard');
+})->middleware(['auth', 'admin'])->name('dashboard'); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,4 +41,8 @@ Route::get('/eateryView/{sku}', [PageController::class, 'eateryView'])->name('ea
 
 Route::resource('admin/eatery', EateryController::class)->except(['show'])->middleware(['auth', 'check.admin']);
 Route::resource('admin/eaterycategory', EateryCategoryController::class)->except(['show'])->middleware(['auth', 'check.admin']);
+
 Route::resource('cart', CartController::class)->except(['show'])->middleware(['auth']);
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('cart.checkout');
+Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count')->middleware(['auth']);
+Route::get('/cart/total', [CartController::class, 'total'])->name('cart.total')->middleware(['auth']);

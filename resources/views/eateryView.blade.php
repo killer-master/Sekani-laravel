@@ -37,13 +37,13 @@
                             </p>
                         </div>
                         <h3 class="wheat"> ₦ {{ number_format($eateryview->price, 2) }}</h3>
-                        @error('eateryview')
+                        @error('eatery')
                             <span class="small fw-bold text-danger">{{ $message }}</span>
                         @enderror
                         <div class="my-4">
-                            <form action="{{ route('cart.store') }}" method="post">
+                            <form action="{{ route('cart.store') }}" method="POST">
                             @csrf
-                            {{-- <input type="hidden" value="{{ $eateryview->id }}" name="product"> --}}
+                            <input type="hidden" value="{{ $eateryview->id }}" name="eatery">
                             <button class="btn btn-success wheat">
                                 <i class="fa-solid fa-shopping-cart"></i> Add to Cart
                             </button>
