@@ -396,7 +396,7 @@
                 </div>
                 <div class="col-6">
                     <label class="form-label text-capitalize"><span class="span-gym-hero fw-bold fs-5"><i
-                                class="fa-solid fa-users"></i> Number of Players *</span></label>
+                                class="fa-solid fa-users"></i> Plan *</span></label>
                     <select class="form-select select-gym" required name="" id="players">
                         <option selected hidden value="">Membership plan</option>
                         <option value="Starters" class="text-capitalize">Starters</option>
@@ -442,7 +442,7 @@
 
                 const whatsappNumber = "2349065404205";
 
-                const whatsappMessage = `Hello, I would like to make an game enquiry.
+                const whatsappMessage = `Hello, I would like to make an enquiry.
 
 *Title*: ${title}
 *Name*: ${name}

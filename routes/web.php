@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\EateryCategoryController;
 use App\Http\Controllers\Admin\EateryController;
+use App\Http\Controllers\Admin\UserListController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
@@ -46,3 +47,5 @@ Route::resource('cart', CartController::class)->except(['show'])->middleware(['a
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('cart.checkout');
 Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count')->middleware(['auth']);
 Route::get('/cart/total', [CartController::class, 'total'])->name('cart.total')->middleware(['auth']);
+
+Route::resource('admin/user', UserListController::class)->only(['index','update','destroy'])->middleware(['auth', 'check.admin']);

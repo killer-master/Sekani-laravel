@@ -324,13 +324,13 @@
             .premium-btn-primary {
                 background: linear-gradient(135deg, orangered, #ff7a3d);
                 color: #fff;
-                box-shadow: 0 12px 30px rgba(255, 69, 0, 0.28);
+                box-shadow: 0 12px 30px #ff450047;
             }
 
             .premium-btn-primary:hover {
                 transform: translateY(-3px);
                 color: #fff;
-                box-shadow: 0 16px 36px rgba(255, 69, 0, 0.35);
+                box-shadow: 0 16px 36px #ff450059;
             }
 
             .premium-btn-primary-sm {

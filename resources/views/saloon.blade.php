@@ -75,11 +75,11 @@
                                     <i class="fa-solid fa-scissors saloon_moji pt-4 pe-5"></i>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column">
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     Precision Cuts
                                 </div>
-                                <div class="p pt2" style="font-family: Montserrat">
+                                <div class="p pt-2" style="font-family: Montserrat">
                                     Expert haircuts tailored to your style and face shape
                                 </div>
                             </div>
@@ -92,11 +92,11 @@
                                     <i class="fa-solid fa-star saloon_moji pt-4 pe-5"></i>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column">
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     Hair Treatments
                                 </div>
-                                <div class="p pb-4" style="font-family: Montserrat">
+                                <div class="p pb-2" style="font-family: Montserrat">
                                     Nourishing treatments for healthy, vibrant hair
                                 </div>
                             </div>
@@ -109,11 +109,11 @@
                                     <i class="fa-solid fa-spa saloon_moji pt-4 pe-5"></i>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column">
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     spa
                                 </div>
-                                <div class="p pt2" style="font-family: Montserrat">
+                                <div class="p pt-2" style="font-family: Montserrat">
                                     An Escape Into Pure Tranquility, Where Relaxation Becomes a Lifestyle
                                 </div>
                             </div>

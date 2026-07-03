@@ -54,11 +54,11 @@
                                         </a>
 
                                         <form action="{{ route('eaterycategory.destroy', $category->id) }}"
-                                              method="POST" class="delete-form">
+                                              method="POST" class="delete-form-category">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="ecat-btn-delete delete-form-category">
+                                            <button class="ecat-btn-delete">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>

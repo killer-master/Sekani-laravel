@@ -16,7 +16,7 @@
                         waters, world-class amenities, and unforgettable moments await you.
                     </div><br>
                     <a href="#swim" class="text-decoration-none">
-                        <div class="h4 fs-6 text-capitalize size-swim1 blur">
+                        <div class="h4 fs-6 text-capitalize size-swim1 premium-btn-outline blur">
                             view facilities
                         </div>
                     </a>
@@ -86,7 +86,7 @@
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     Crystal clear water
                                 </div>
-                                <div class="p pt2" style="font-family: Montserrat">
+                                <div class="p pt-2" style="font-family: Montserrat">
                                     Our pool water is treated with advanced filtration system ensuring pristine clarity and
                                     safety.
                                 </div>
@@ -104,7 +104,7 @@
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     safe & hygienic
                                 </div>
-                                <div class="p pb-4" style="font-family: Montserrat">
+                                <div class="p pb-2" style="font-family: Montserrat">
                                     Professional maintenance and regular safety checks guarantee a worry-free swimming
                                     experience
                                 </div>
@@ -122,7 +122,7 @@
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     family friendly
                                 </div>
-                                <div class="p pt2" style="font-family: Montserrat">
+                                <div class="p pt-2" style="font-family: Montserrat">
                                     Dedication zones for children and families creates the perfect environment for quality
                                     time together
                                 </div>
@@ -140,7 +140,7 @@
                                 <div class="h4 text-capitalize pt-4" style="font-family: serif">
                                     All-Day comfort
                                 </div>
-                                <div class="p pb-4" style="font-family: Montserrat">
+                                <div class="p pb-2" style="font-family: Montserrat">
                                     Enjoy poolside loungers, shaded cabanas, and comfortable amenities from sunrise to
                                     sunset.
                                 </div>

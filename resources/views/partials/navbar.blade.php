@@ -32,7 +32,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="white nav-link dropdown-toggle" href="#" id="dropdownId"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Service</a>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownId"
                                     style="background-color: #212529;">
                                     <a class="dropdown-item text-center wheat {{ request()->is('fitness') ? 'activee' : '' }}"
@@ -106,6 +106,8 @@
                                         <a href="{{ route('eatery.index') }}" class="dropdown-item wheat"> Eatery </a>
                                         <hr class="wheat">
                                         <a href="{{ route('eaterycategory.index') }}" class="dropdown-item wheat"> Eatery Category </a>
+                                        <hr class="wheat">
+                                        <a href="{{ route('user.index') }}" class="dropdown-item wheat"> User List </a>
                                         <hr class="wheat">
                                         {{-- <a href="#" class="dropdown-item wheat"> Gallery </a>
                                         <a href="#" class="dropdown-item wheat"> Products </a>

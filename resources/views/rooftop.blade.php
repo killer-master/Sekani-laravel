@@ -23,12 +23,12 @@
                         Premium drinks, curated music, breathtaking views, and unforgettable vibes above the city.
                     </div><br>
                     <a href="#whatsappForm-roof" class="text-decoration-none">
-                        <div class="h4 fs-6 text-capitalize size-roof5 blur">
+                        <div class="h4 fs-6 text-capitalize size-roof5 premium-btn-primary blur">
                             Reserve a Table <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </a>
                     <a href="#roof-servics" class="text-decoration-none ps-3">
-                        <div class="h4 fs-6 text-capitalize size-roof5 blur">
+                        <div class="h4 fs-6 text-capitalize size-roof5 premium-btn-primary blur">
                             View Menu
                         </div>
                     </a>

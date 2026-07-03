@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\EateryCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,15 +16,19 @@ class EateryCategoryController extends Controller
      */
     public function index()
     {
-        $categories = EateryCategory::all();
+        // $categories = EateryCategory::all();
+        $categories = Cache::remember('categories', now()->addHours(24), function () {
+            return EateryCategory::all();
+        });
+
         return view('eaterycategory.index', compact('categories'));
     }
 
     /**
- * Show the form for creating a new resource.
+     * Show the form for creating a new resource.
      */
     public function create()
-    {        
+    {
         return view('eaterycategory.create');
     }
 
@@ -43,10 +48,11 @@ class EateryCategoryController extends Controller
             'slug' => $slug
         ]);
 
+        Cache::forget('categories');
+
         Alert::success('Created Successfully');
 
-        return back()->with('success','saved successfully');
-        
+        return back()->with('success', 'saved successfully');
     }
 
     /**
@@ -78,15 +84,17 @@ class EateryCategoryController extends Controller
         ]);
 
         $slug = Str::slug($data['name']);
-       
+
         $category->update([
             'name' => $data['name'],
             'slug' => $slug
         ]);
 
+        Cache::forget('categories');
+
         Alert::success('Updated Successfully');
 
-        return back()->with('success','Updated successfully');
+        return back()->with('success', 'Updated successfully');
     }
 
     /**
@@ -96,6 +104,7 @@ class EateryCategoryController extends Controller
     {
         $category = EateryCategory::findOrFail($id);
         $category->delete();
+        Cache::forget('categories');
 
         Alert::success("Eatery Catergory Deleted");
         return back()->with('success', 'Eatery Catergory deleted successfully!');

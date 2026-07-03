@@ -1212,6 +1212,20 @@ html {
     background-color: var(--darkblue);
 }
 
+.premium-btn-outline {
+    background: #ffffff0d;
+    color: #fff;
+    border: 1px solid #ffffff;
+    backdrop-filter: blur(10px);
+}
+
+.premium-btn-outline:hover {
+    background: #ffffff1a;
+    color: #fff;
+    transform: translateY(-5px);
+    transition-duration: 0.5s;
+}
+
 .darkblue {
     color: #0a4976;
 }
@@ -1916,13 +1930,26 @@ html {
     display: flex;
     position: absolute;
     /* padding-bottom: 20rem; */
-}
+} 
 
 .color-roof2 {
     position: relative;
     background-color: #00000094;
     height: 20rem;
     width: 100%;
+}
+
+.premium-btn-primary {
+    /* background: linear-gradient(135deg, orangered, #ff7a3d); */
+    color: #fff;
+    box-shadow: 0 12px 30px #ff450047;
+}
+
+.premium-btn-primary:hover {
+    transform: translateY(-3px);
+    transition-duration: 0.5s;
+    color: #fff;
+    box-shadow: 0 16px 36px #ff450059;
 }
 
 .pad-gym {
@@ -2304,3 +2331,229 @@ html {
     border-radius: 1rem;
     background-color: #5c3a23a6;
 }
+
+
+
+
+
+
+
+
+
+/* ===========================
+   LUMINA ADMIN USER PANEL
+=========================== */
+
+.lumina-admin-wrapper{
+    padding:30px;
+    background:#0f172a;
+    min-height:100vh;
+    color:#fff;
+}
+
+.lumina-admin-header{
+    margin-bottom:25px;
+}
+
+.lumina-admin-header h2{
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.lumina-admin-header p{
+    color:#94a3b8;
+}
+
+.lumina-admin-table-container{
+    background:#1e293b;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+.lumina-admin-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.lumina-admin-table thead{
+    background:#111827;
+}
+
+.lumina-admin-table thead th{
+    padding:18px;
+    text-align:left;
+    color:#cbd5e1;
+    font-size:14px;
+    font-weight:600;
+}
+
+.lumina-admin-table tbody tr{
+    border-bottom:1px solid #334155;
+    transition:.3s;
+}
+
+.lumina-admin-table tbody tr:hover{
+    background:#243244;
+}
+
+.lumina-admin-table td{
+    padding:18px;
+    color:#e2e8f0;
+}
+
+.lumina-admin-role{
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.lumina-admin-role-admin{
+    background:#065f46;
+    color:#6ee7b7;
+}
+
+.lumina-admin-role-user{
+    background:#1e3a8a;
+    color:#93c5fd;
+}
+
+.lumina-admin-btn{
+    border:none;
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.lumina-admin-btn-edit{
+    background:#f59e0b;
+    color:#fff;
+}
+
+.lumina-admin-btn-edit:hover{
+    background:#d97706;
+}
+
+.lumina-admin-btn-delete{
+    background:#dc2626;
+    color:#fff;
+    margin-left:5px;
+}
+
+.lumina-admin-btn-delete:hover{
+    background:#b91c1c;
+}
+
+@media(max-width:768px){
+
+    .lumina-admin-wrapper{
+        padding:15px;
+    }
+
+    .lumina-admin-table-container{
+        overflow-x:auto;
+    }
+
+    .lumina-admin-table{
+        min-width:800px;
+    }
+}
+
+
+
+
+
+/* ===========================
+   EDIT USER PAGE
+=========================== */
+
+.lumina-admin-edit-card{
+    max-width:700px;
+    margin:40px auto;
+    background:#1e293b;
+    border-radius:15px;
+    padding:35px;
+    box-shadow:0 0 20px rgba(0,0,0,.35);
+}
+
+.lumina-admin-form-group{
+    margin-bottom:22px;
+}
+
+.lumina-admin-form-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-weight:600;
+}
+
+.lumina-admin-input,
+.lumina-admin-select{
+    width:100%;
+    padding:14px;
+    border:1px solid #334155;
+    border-radius:8px;
+    background:#0f172a;
+    color:#fff;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+    box-sizing:border-box;
+}
+
+.lumina-admin-input:focus,
+.lumina-admin-select:focus{
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,.35);
+}
+
+.lumina-admin-buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+}
+
+.lumina-admin-btn-back{
+    background:#475569;
+    color:#fff;
+}
+
+.lumina-admin-btn-back:hover{
+    background:#334155;
+}
+
+.lumina-admin-btn-save{
+    background:#16a34a;
+    color:#fff;
+}
+
+.lumina-admin-btn-save:hover{
+    background:#15803d;
+}
+
+.lumina-admin-alert-success{
+    background:#064e3b;
+    color:#6ee7b7;
+    padding:12px 16px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.lumina-admin-alert-error{
+    background:#7f1d1d;
+    color:#fecaca;
+    padding:12px 16px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.lumina-admin-alert-error ul{
+    margin:0;
+    padding-left:20px;
+} 
