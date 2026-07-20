@@ -7,26 +7,39 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\EateryCategory;
 use Illuminate\Support\Facades\File;
-use Pest\Support\Str;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Cache;
 
 // use App\Http\Controllers\Admin\Eatery;
 
 class EateryController extends Controller
-{   
-    
+{
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $eateryss = Eatery::latest()->get();
-        // return view('eatery.index', compact('eaterys'));
-        
-        $eaterys = Eatery::with('category')->get()->groupBy('category_id');
-        $categories = EateryCategory::all();
+        // $eateryss = Eatery::latest()->get();
+        // $eaterys = Eatery::with('category')->get()->groupBy('category_id');
+        // $categories = EateryCategory::all();
 
-    return view('eatery.index', compact('eaterys', 'categories', 'eateryss'));
+        $eateryss = Cache::remember('eatery.latest', now()->addHours(24), function () {
+            return Eatery::latest()->get();
+        });
+
+        $eaterys = Cache::remember('eatery.grouped', now()->addHours(24), function () {
+            return Eatery::with('category')
+                ->get()
+                ->groupBy('category_id');
+        });
+
+        $categories = Cache::remember('eatery.categories', now()->addHours(24), function () {
+            return EateryCategory::orderBy('name')->get();
+        });
+
+        return view('eatery.index', compact('eaterys', 'categories', 'eateryss'));
     }
 
     /**
@@ -38,16 +51,23 @@ class EateryController extends Controller
         return view('eatery.create', compact('categories'));
     }
 
+    private function clearEateryCache()
+    {
+        Cache::forget('eatery.latest');
+        Cache::forget('eatery.grouped');
+        Cache::forget('eatery.categories');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $data = $request-> validate([
+        $data = $request->validate([
             'name' => "required|string",
             'price' => "required|numeric",
             'category' => "required|exists:eatery_categories,id",
-            'image' => "required|image|mimes:png,jpg,jpeg,gif|max:2048",
+            'image' => "required|image|mimes:jpeg,png,jpg,webp|max:1024",
             'description' => "required|string",
         ]);
 
@@ -67,9 +87,11 @@ class EateryController extends Controller
             'description' => $data['description']
         ]);
 
+        $this->clearEateryCache();
+
         Alert::success('Created Successfully');
 
-        return back()->with('success','saved successfully');
+        return back()->with('success', 'saved successfully');
     }
 
     /**
@@ -86,11 +108,14 @@ class EateryController extends Controller
     public function edit(string $sku)
     {
         $eatery = Eatery::where('sku',  $sku)->firstOrFail();
-        $categories = EateryCategory::all()->sortBy('name');
+        // $categories = EateryCategory::all()->sortBy('name');
+        $categories = Cache::remember('eatery.categories', now()->addHours(24), function () {
+            return EateryCategory::sortBy('name')->get();
+        });
         return view('eatery.edit', compact('eatery', 'categories'));
     }
 
-    
+
     /**
      * Update the specified resource in storage.
      */
@@ -98,10 +123,10 @@ class EateryController extends Controller
     {
         $eatery = Eatery::where('sku',  $sku)->firstOrFail();
 
-        $data = $request-> validate([
+        $data = $request->validate([
             'name' => "required|string",
             'price' => "required|numeric",
-            'image' => "nullable|image|mimes:png,jpg,jpeg,gif|max:2048",
+            'image' => "nullable|image|mimes:jpeg,png,jpg,webp|max:1024",
             'description' => "required|string",
         ]);
 
@@ -131,9 +156,11 @@ class EateryController extends Controller
             ]);
         }
 
+        $this->clearEateryCache();
+
         Alert::success('Updated Successfully');
 
-        return back()->with('success','Updated successfully');
+        return back()->with('success', 'Updated successfully');
     }
 
     /**
@@ -150,6 +177,8 @@ class EateryController extends Controller
             if (File::exists(public_path('uploads/eatery/' . $oldFile))) {
                 File::delete(public_path('uploads/eatery/' . $oldFile));
             }
+
+            $this->clearEateryCache();
 
             Alert::success("Eatery Deleted");
         } else {

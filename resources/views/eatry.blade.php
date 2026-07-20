@@ -77,7 +77,7 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Protein"
+                            <img src="{{ asset('assets/images/beef_comp.webp') }}" alt="Protein"
                                 class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Protein</h3>
@@ -97,7 +97,7 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Pasta"
+                            <img src="{{ asset('assets/images/rice_chic.webp') }}" alt="Pasta"
                                 class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Pasta</h3>
@@ -117,7 +117,7 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Beverage"
+                            <img src="{{ asset('assets/images/watermellon.webp') }}" alt="Beverage"
                                 class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Beverage</h3>

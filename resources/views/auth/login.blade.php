@@ -1,54 +1,97 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.app')
+@section('content')
+    <div class="sek-login-wrapper">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+        <div class="sek-login-card">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <div class="text-start">
-                <a href="{{ route('register') }}">
-                    <x-primary-button class="me-3">
-                        {{ __('Register') }}
-                    </x-primary-button>
-                </a>
+            <div class="sek-login-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to continue to your account.</p>
             </div>
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <!-- Session Status -->
+            <x-auth-session-status class="mb-4" :status="session('status')" />
+
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <!-- Email -->
+                <div class="sek-login-group">
+                    <x-input-label class="sek-login-label" for="email" :value="__('Email Address')" />
+
+                    <x-text-input
+                        id="email"
+                        class="sek-login-input"
+                        type="email"
+                        name="email"
+                        :value="old('email')"
+                        required
+                        autofocus
+                        autocomplete="username"
+                        placeholder="example@gmail.com"
+                    />
+
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+
+                <!-- Password -->
+                <div class="sek-login-group">
+                    <x-input-label class="sek-login-label" for="password" :value="__('Password')" />
+
+                    <x-text-input
+                        id="password"
+                        class="sek-login-input"
+                        type="password"
+                        name="password"
+                        required
+                        autocomplete="current-password"
+                        placeholder="Enter your password"
+                    />
+
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <!-- Remember -->
+                <div class="sek-login-remember">
+
+                    <label class="sek-login-checkbox">
+
+                        <input
+                            id="remember_me"
+                            type="checkbox"
+                            name="remember">
+
+                        <span>Remember Me</span>
+
+                    </label>
+
+                </div>
+
+                <div class="sek-login-actions">
+
+                    <a href="{{ route('register') }}" class="sek-login-register">
+                        Register
+                    </a>
+
+                    @if (Route::has('password.request'))
+                        <a
+                            href="{{ route('password.request') }}"
+                            class="sek-login-forgot">
+
+                            Forgot Password?
+                        </a>
+                    @endif
+
+                </div>
+
+                <button class="sek-login-btn">
+                    Log In
+                </button>
+
+            </form>
+
         </div>
-    </form>
-</x-guest-layout>
+
+    </div>
+
+@endsection

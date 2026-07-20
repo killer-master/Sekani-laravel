@@ -31,7 +31,7 @@
 }
 
 
-html {
+body {
     scroll-behavior: smooth;
 }
 
@@ -143,7 +143,8 @@ html {
 }
 
 .index-hero {
-    background-image: url('/public/assets/images/sekani-hero.jpg');
+    /* background-image: url('/public/assets/images/sekani-hero.jpg'); */
+    background-image: url('/public/assets/images/A0044F1D-32B1-4D4F-A951-1324D51CE895.jpeg');
     background-size: cover;
     height: 100dvh;
     width: 100%;
@@ -365,11 +366,11 @@ html {
 }
 
 .index-services-hover-eat:hover {
-    background-image: url('/public/assets/images/food.jpg');
+    background-image: url('/public/assets/images/food-comp.jpg');
 }
 
 .index-services-hover-vip:hover {
-    background-image: url('/public/assets/images/vip2.jpg');
+    background-image: url('/public/assets/images/vip2-comp.webp');
 }
 
 .index-services-hover-sal:hover {
@@ -495,7 +496,7 @@ html {
 
 /* EATRY CSS */
 .eatry_hero {
-    background-image: url('/public/assets/images/food.jpg');
+    background-image: url('/public/assets/images/food-comp.jpg');
     background-size: cover;
     height: 150dvh;
 }
@@ -2557,3 +2558,233 @@ html {
     margin:0;
     padding-left:20px;
 } 
+
+
+
+
+
+/* ===================================================
+   SEKANI LOGIN PAGE
+   All classes are unique.
+=================================================== */
+
+.sek-login-wrapper{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+    background:#0f1115;
+    background-image:
+        radial-gradient(circle at top right,#ff5a0a18,transparent 35%),
+        radial-gradient(circle at bottom left,#ff5a0a10,transparent 40%);
+}
+
+.sek-login-card{
+    width:100%;
+    max-width:460px;
+    background:#181b22;
+    border:1px solid rgba(255,90,10,.18);
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
+}
+
+.sek-login-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.sek-login-header h1{
+    color:#fff;
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.sek-login-header p{
+    color:#9ca3af;
+    font-size:15px;
+}
+
+.sek-login-group{
+    margin-bottom:25px;
+}
+
+.sek-login-label{
+    display:block;
+    margin-bottom:8px;
+    color:#f1f1f1;
+    font-size:15px;
+    font-weight:600;
+}
+
+.sek-login-input{
+    width:100%;
+    background:#242833 !important;
+    border:1px solid #343945 !important;
+    color:#fff !important;
+    border-radius:12px !important;
+    padding:14px 18px !important;
+    transition:.3s;
+}
+
+.sek-login-input::placeholder{
+    color:#8d8d8d;
+}
+
+.sek-login-input:focus{
+    border-color:#ff5a0a !important;
+    box-shadow:0 0 0 4px rgba(255,90,10,.15) !important;
+}
+
+.sek-login-remember{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.sek-login-checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#d6d6d6;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.sek-login-checkbox input{
+    width:18px;
+    height:18px;
+    accent-color:#ff5a0a;
+}
+
+.sek-login-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.sek-login-register{
+    color:#ff5a0a;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.sek-login-register:hover{
+    color:#ff7d3d;
+}
+
+.sek-login-forgot{
+    color:#bdbdbd;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.sek-login-forgot:hover{
+    color:#ff5a0a;
+}
+
+.sek-login-btn{
+    width:100%;
+    background:#ff5a0a;
+    border:none;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    padding:15px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.sek-login-btn:hover{
+    background:#ff6b24;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(255,90,10,.35);
+}
+
+.sek-login-btn:active{
+    transform:scale(.98);
+}
+
+/* Breeze Validation Errors */
+
+.sek-login-card ul{
+    margin:8px 0;
+    padding-left:18px;
+}
+
+.sek-login-card li{
+    color:#ff7b7b;
+    font-size:14px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .sek-login-card{
+        padding:30px;
+    }
+
+    .sek-login-header h1{
+        font-size:28px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .sek-login-card{
+        padding:24px;
+        border-radius:16px;
+    }
+
+    .sek-login-actions{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .sek-login-btn{
+        font-size:15px;
+        padding:14px;
+    }
+
+}
+/* ===========================================
+   Authentication Success Message
+=========================================== */
+
+.sek-auth-success{
+    background:rgba(34,197,94,.12);
+    border:1px solid rgba(34,197,94,.35);
+    color:#7CFFB2;
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:25px;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* ===========================================
+   Link-style Button (Logout)
+=========================================== */
+
+.sek-auth-link-btn{
+    background:none;
+    border:none;
+    color:#bdbdbd;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+    padding:0;
+}
+
+.sek-auth-link-btn:hover{
+    color:#ff5a0a;
+}
