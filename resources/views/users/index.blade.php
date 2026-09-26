@@ -155,12 +155,12 @@
 
                                                 </div>
                                             </div>
-                                        </div>  
+                                        </div>
                                     </div>
                                 </div>
 
-                                <form action="{{ route('user.destroy', $user->id) }}" method="POST"
-                                    style="display:inline" class="delete-form">
+                                <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline"
+                                    class="delete-form">
 
                                     @csrf
                                     @method('DELETE')
@@ -191,19 +191,20 @@
             </table>
 
         </div>
-<style>
-    .pagination {
-    --bs-pagination-color: #ff6600;
-    --bs-pagination-hover-color: #fff;
-    --bs-pagination-hover-bg: #ff6600;
-    --bs-pagination-active-bg: #ff6600;
-    --bs-pagination-active-border-color: #ff6600;
-    --bs-pagination-active-color: #fff;
-}
-.text-muted {
-    color: white !important;
-}
-</style>
+        <style>
+            .pagination {
+                --bs-pagination-color: #ff6600;
+                --bs-pagination-hover-color: #fff;
+                --bs-pagination-hover-bg: #ff6600;
+                --bs-pagination-active-bg: #ff6600;
+                --bs-pagination-active-border-color: #ff6600;
+                --bs-pagination-active-color: #fff;
+            }
+
+            .text-muted {
+                color: white !important;
+            }
+        </style>
         <div class="mt-4">
             {!! $users->links('pagination::bootstrap-5') !!}
         </div>

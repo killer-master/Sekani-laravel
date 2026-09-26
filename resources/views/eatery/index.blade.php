@@ -53,8 +53,7 @@
                         {{-- Eatery Image --}}
                         <div class="position-relative image-wrap">
                             <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
-                                class="card-img-top" alt="{{ $eatery->name }}"
-                                style="height: 230px; object-fit: cover;">
+                                class="card-img-top" alt="{{ $eatery->name }}" style="height: 230px; object-fit: cover;">
                             {{-- Overlay --}}
                             <div class="image-overlay"></div>
 
@@ -83,7 +82,8 @@
                                     </a>
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center gap-2 pt-2 border-top action-row">
+                                <div
+                                    class="d-flex justify-content-between align-items-center gap-2 pt-2 border-top action-row">
                                     <a href="{{ route('eatery.edit', $eatery->sku) }}"
                                         class="btn premium-btn-warning w-100">
                                         Edit
@@ -113,12 +113,31 @@
                     </div>
                 </div>
             @endforelse
+            <div class="mt-4">
+                {!! $eateryss->links('pagination::bootstrap-5') !!}
+            </div>
         </div>
 
-        
+
 
         {{-- Custom Styling --}}
         <style>
+            .pagination {
+                --bs-pagination-color: #ff6600;
+                --bs-pagination-hover-color: #fff;
+                --bs-pagination-hover-bg: #ff6600;
+                --bs-pagination-active-bg: #ff6600;
+                --bs-pagination-active-border-color: #ff6600;
+                --bs-pagination-active-color: #fff;
+            }
+
+            /* .text-muted {
+                    color: white !important;
+                } */
+
+
+
+
             body {
                 background: linear-gradient(180deg, #f8f9fc 0%, #ffffff 100%);
             }

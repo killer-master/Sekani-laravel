@@ -21,23 +21,23 @@ class EateryController extends Controller
      */
     public function index()
     {
-        // $eateryss = Eatery::latest()->get();
-        // $eaterys = Eatery::with('category')->get()->groupBy('category_id');
-        // $categories = EateryCategory::all();
+        $eateryss = Eatery::latest()->paginate(8);
+        $eaterys = Eatery::with('category')->paginate(8)->groupBy('category_id');
+        $categories = EateryCategory::all();
 
-        $eateryss = Cache::remember('eatery.latest', now()->addHours(24), function () {
-            return Eatery::latest()->get();
-        });
+        // $eateryss = Cache::remember('eatery.latest', now()->addHours(24), function () {
+        //     return Eatery::latest()->get();
+        // });
 
-        $eaterys = Cache::remember('eatery.grouped', now()->addHours(24), function () {
-            return Eatery::with('category')
-                ->get()
-                ->groupBy('category_id');
-        });
+        // $eaterys = Cache::remember('eatery.grouped', now()->addHours(24), function () {
+        //     return Eatery::with('category')
+        //         ->paginate(8)
+        //         ->groupBy('category_id');
+        // });
 
-        $categories = Cache::remember('eatery.categories', now()->addHours(24), function () {
-            return EateryCategory::orderBy('name')->get();
-        });
+        // $categories = Cache::remember('eatery.categories', now()->addHours(24), function () {
+        //     return EateryCategory::orderBy('name')->get();
+        // });
 
         return view('eatery.index', compact('eaterys', 'categories', 'eateryss'));
     }
@@ -110,7 +110,7 @@ class EateryController extends Controller
         $eatery = Eatery::where('sku',  $sku)->firstOrFail();
         // $categories = EateryCategory::all()->sortBy('name');
         $categories = Cache::remember('eatery.categories', now()->addHours(24), function () {
-            return EateryCategory::sortBy('name')->get();
+            return EateryCategory::all()->sortBy('name');
         });
         return view('eatery.edit', compact('eatery', 'categories'));
     }
