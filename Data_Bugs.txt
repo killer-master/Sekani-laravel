@@ -1,0 +1,19 @@
+Users  - name, email, password, phone, role[admin, user]
+
+eatery -  Name, image, price, category of food, discription,
+
+category -  Name, slug
+
+Products - name, price, sku (Stock Keeping Unit), stock, color, category
+
+Cart - user, product, quantity, price, address.
+
+Galleries - name, caption
+
+
+
+BUGS
+
+1. when i tap checkout for carts let it open the whatsapp link in a new blank page 
+2. create an admin secion that can see all oders placed by which user, the time the oder placed, the location, and last time any other changes was made, and alter the delivery status of each oder
+3.  

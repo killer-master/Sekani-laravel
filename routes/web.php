@@ -47,5 +47,7 @@ Route::resource('cart', CartController::class)->except(['show'])->middleware(['a
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('cart.checkout');
 Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count')->middleware(['auth']);
 Route::get('/cart/total', [CartController::class, 'total'])->name('cart.total')->middleware(['auth']);
+Route::get('/cart/history', [CartController::class, 'history'])->name('cart.history')->middleware(['auth']);
+
 
 Route::resource('admin/user', UserListController::class)->only(['index','update','destroy'])->middleware(['auth', 'check.admin']);

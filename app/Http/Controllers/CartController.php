@@ -63,7 +63,7 @@ class CartController extends Controller
 
         Alert::success('Added to Cart');
 
-        return back()->with('success', 'Added successfully');
+        return back()->with('success', 'Added to cart successfully');
     }
 
     /**
@@ -107,7 +107,7 @@ class CartController extends Controller
         $message .= "Address: " . $request->address . "\n\n";
 
         foreach ($cartItems as $item) {
-            $message .= "{$item->eatery->name} - {$item->eatery->category->name} x {$item->quantity}\n";
+            $message .= "{$item->eatery->name} x {$item->quantity} - {$item->eatery->category->name}\n";
         }
 
         $message .= "\nTotal: ₦" . $cartItems->sum('amount');
@@ -118,12 +118,24 @@ class CartController extends Controller
         return redirect(
             'https://wa.me/2349065404205?text=' . urlencode($message)
         );
-    
-    
+
+
 
         // Alert::success('Added to cart');
         // return back()->with('success', 'Oder in progress');
     }
+
+    public function history()
+    {
+        // $historys = Cart::latest()->paginate(5);
+        // return view('shopping.history', compact('historys'));
+        $historys = Cart::where('user_id', Auth::id())
+            ->latest()
+            ->paginate(5);
+
+        return view('shopping.history', compact('historys'));
+    }
+
 
 
     /**

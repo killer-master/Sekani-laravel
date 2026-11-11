@@ -1,0 +1,66 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="" style="background-color: #eeeeee">
+        <div class="container">
+            <div class="container-fluid py-3">
+                <a href="{{ route('cart.index') }}" class="py-3">Back</a>
+                <div class="row">
+                    @forelse ($historys as $history)
+                        <div class="col-12 my-1 py-3"
+                            style="border: #80808090 1px solid; background-color: white; border-radius: 1rem;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="fw-bold fs-5">
+                                        @if ($history->status == 'added')
+                                            <span class="rounded-pill px-2 py-1"
+                                                style="background-color: #f8d7da; color: #842029; font-size: 12px;">Order
+                                                still in progress</span>
+                                        @else
+                                            <div class="fw-bold fs-5">
+                                                Order {{ $history->ref }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end fw-bold">
+                                        <span class="rounded-pill px-2 py-1"
+                                            style="background-color: #ffff0086; color: orange; font-size: 12px;">Oder
+                                            {{ $history->status }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <small style="font-size: 12px">{{ $history->created_at }}</small>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <small style="font-size: 12px">{{ $history->quantity }} Item</small>
+                                </div>
+                                <div class="col-3 col-md-1">
+                                    <div class="" style="max-width: 7rem; max-height: 7rem;">
+                                        <img src="{{ asset('uploads/eatery/' . $history->eatery->image) }}"
+                                            class="img-fluid w-100"
+                                            style="height: 100%; object-fit: cover; border-radius: .5rem">
+                                    </div>
+                                </div>
+                                <div class="col-7 col-md-7">
+                                    <div class="d-flex align-items-center" style="height: 100%;">
+                                        <div class="fw-bold fs-5">
+                                            {{ $history->eatery->name }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-4 d-flex align-items-center justify-content-end" style="height: 100%;">
+                                    <span class="fw-bold fs-5">
+                                        ${{ $history->amount }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

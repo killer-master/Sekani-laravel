@@ -10,9 +10,14 @@
                             <div class="row">
 
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3">
-                                        <a href="{{ route('eatry.page') }}" class="text-body"><i
-                                                class="fas fa-long-arrow-alt-left me-2"></i>Back to menu</a>
+                                    <h5 class="mb-3 d-flex justify-content-between">
+                                        <a href="{{ route('eatry.page') }}" class="text-body">
+                                            <i class="fas fa-long-arrow-alt-left me-2"></i>
+                                            Back to menu <i class="fa-solid fa-shop text-decoration-underline"></i>
+                                        </a>
+                                        <a href="{{ route('cart.history') }}" class="" style="color: black">
+                                            Oder History
+                                        </a>
                                     </h5>
                                     <hr>
 
@@ -152,5 +157,5 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 @endsection
