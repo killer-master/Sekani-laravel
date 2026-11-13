@@ -14,6 +14,7 @@ Galleries - name, caption
 
 BUGS
 
-1. when i tap checkout for carts let it open the whatsapp link in a new blank page 
+1. when i tap checkout for carts let it open the whatsapp link in a new blank page -------
 2. create an admin secion that can see all oders placed by which user, the time the oder placed, the location, and last time any other changes was made, and alter the delivery status of each oder
-3.  
+3. in the carts system it is really hard for user to increase the quantity make it in such a way that in the cart any user can easily increment by clicking an arrow to add a quantity by one and it automatically update the database and by clicking a down arrow to decrease the quantity and the quantity cant go less than 1 --------
+4. i have noticed that my carts page is no longer phone size responsive can you fix that

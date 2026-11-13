@@ -44,10 +44,12 @@ Route::resource('admin/eatery', EateryController::class)->except(['show'])->midd
 Route::resource('admin/eaterycategory', EateryCategoryController::class)->except(['show'])->middleware(['auth', 'check.admin']);
 
 Route::resource('cart', CartController::class)->except(['show'])->middleware(['auth']);
+Route::patch('/cart/{id}/quantity', [CartController::class, 'updateQuantity'])->middleware('auth')->name('cart.quantity');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('cart.checkout');
 Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count')->middleware(['auth']);
 Route::get('/cart/total', [CartController::class, 'total'])->name('cart.total')->middleware(['auth']);
 Route::get('/cart/history', [CartController::class, 'history'])->name('cart.history')->middleware(['auth']);
+Route::get('/cart/AdminHistory', [CartController::class, 'AdminHistory'])->name('cart.admin.history')->middleware(['auth', 'check.admin']);
 
 
 Route::resource('admin/user', UserListController::class)->only(['index','update','destroy'])->middleware(['auth', 'check.admin']);

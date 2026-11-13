@@ -57,7 +57,7 @@
                 <div class="row g-4">
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/hero.jpg') }}" alt="Swallow & Soup"
+                            <img src="{{ asset('assets/images/goat.webp') }}" alt="Swallow & Soup"
                                 class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Swallow & Soup</h3>
@@ -97,7 +97,7 @@
 
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card premium-menu-card h-100 border-0 overflow-hidden">
-                            <img src="{{ asset('assets/images/rice_chic.webp') }}" alt="Pasta"
+                            <img src="{{ asset('assets/images/fried_rice_comp.webp') }}" alt="Pasta"
                                 class="card-img-top premium-card-img">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase fw-bold">Pasta</h3>

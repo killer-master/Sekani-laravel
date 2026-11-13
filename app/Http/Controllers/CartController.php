@@ -66,6 +66,38 @@ class CartController extends Controller
         return back()->with('success', 'Added to cart successfully');
     }
 
+    public function updateQuantity(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'action' => 'required|in:increment,decrement',
+        ]);
+
+        $cartItem = Cart::where('user_id', Auth::id())
+            ->where('status', 'added')
+            ->with('eatery')
+            ->findOrFail($id);
+
+        $quantity = $validated['action'] === 'increment'
+            ? $cartItem->quantity + 1
+            : max(1, $cartItem->quantity - 1);
+
+        $amount = $cartItem->eatery->price * $quantity;
+
+        $cartItem->update([
+            'quantity' => $quantity,
+            'amount' => $amount,
+        ]);
+
+        $cartItems = Auth::user()->cartItems();
+
+        return response()->json([
+            'quantity' => $quantity,
+            'amount' => $amount,
+            'cart_total' => (float) $cartItems->sum('amount'),
+            'item_count' => (int) $cartItems->sum('quantity'),
+        ]);
+    }
+
     /**
      * Display the specified resource.
      */
@@ -134,6 +166,13 @@ class CartController extends Controller
             ->paginate(5);
 
         return view('shopping.history', compact('historys'));
+    }
+
+
+    public function AdminHistory()
+    {
+        $historyss = Cart::latest()->paginate(5);
+        return view('shopping.AdminHistory', compact('historyss'));
     }
 
 

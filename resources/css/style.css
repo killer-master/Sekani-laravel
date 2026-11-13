@@ -524,7 +524,7 @@ body {
     }
 
     .eatry_hero {
-        background-image: url(/public/assets/images/food.jpg);
+        background-image: url(/public/assets/images/food-comp.jpg);
         background-size: cover;
         height: 100dvh;
     }
