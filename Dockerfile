@@ -18,9 +18,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    libsqlite3-dev \
     && docker-php-ext-configure gd --with-jpeg --with-webp \
     && docker-php-ext-install \
        pdo_mysql \
+       pdo_sqlite \
        mbstring \
        exif \
        pcntl \
@@ -58,17 +60,20 @@ RUN npm ci --no-audit --no-fund
 # Copy application
 COPY . .
 
-# Build frontend and set permissions
+# Build frontend and prepare permissions
 RUN composer dump-autoload --no-dev --optimize \
     && php artisan package:discover --ansi \
     && npm run build \
-    && mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+    && mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache database \
+    && chown -R www-data:www-data storage bootstrap/cache database \
+    && chmod -R 775 storage bootstrap/cache database
 
+# Render port
 EXPOSE 10000
 
+# Startup script
 COPY docker/start.sh /usr/local/bin/start.sh
+
 RUN chmod +x /usr/local/bin/start.sh
 
 CMD ["/usr/local/bin/start.sh"]
