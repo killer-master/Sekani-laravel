@@ -30,7 +30,7 @@
                                 Sekani Empire
                             </p>
                             <p>
-                                <a href="tel:09040570782" class="touch" style="color: white;">+234 904 057 0782</a>
+                                <a href="tel:09065404205" class="touch" style="color: white;">+234 906 540 4205</a>
 
                             </p>
                         </div>

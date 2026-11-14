@@ -18,8 +18,8 @@ BUGS
 2. create an admin secion that can see all oders placed by which user, the time the oder placed, the location, and last time any other changes was made, and alter the delivery status of each oder -----
 3. in the carts system it is really hard for user to increase the quantity make it in such a way that in the cart any user can easily increment by clicking an arrow to add a quantity by one and it automatically update the database and by clicking a down arrow to decrease the quantity and the quantity cant go less than 1 --------
 4. i have noticed that my carts page is no longer phone size responsive can you fix that------
-5. how to make it in such a way that anytime i tap add to cart the whole page doesnt reload just to add a product to cart
+5. how to make it in such a way that anytime i tap add to cart the whole page doesnt reload just to add a product to cart xxxxxxxxxx
 6. make it that once i tap checkout it takes the page to a blank page to whatsapp which it already does so dont do anything again about that just make the previous page refresh by itself so that the old the oder would refresh 
-7.  create a new blade without touching this current page make it in such a way that it has the same function with this page but make the design look much more better than mine i want to see which of us work would look better, and always make sure it is always device sizes responsive for all devices do for navbar and home page 
+7.  create a new blade without touching this current page make it in such a way that it has the same function with this page but make the design look much more better than mine i want to see which of us work would look better, and always make sure it is always device sizes responsive for all devices do for navbar and home page -------
 8. check my entire project file i need you to check for any file that isnt screen responsive list all of the out to me and i'll fix it myself just give me suggestions on how i can fix them myself
 9. rebuild the menu page in such a way that there wont be any lag because a lot of images in form of a card would be uploaded to that page
