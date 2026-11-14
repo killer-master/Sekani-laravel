@@ -35,6 +35,9 @@ php artisan config:clear
 # Run database migrations
 php artisan migrate --force
 
+#Run db:seeder
+php artisan db:seed --force
+
 # Cache Laravel configuration
 php artisan config:cache
 php artisan route:cache
