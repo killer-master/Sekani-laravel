@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminHistory;
 use App\Http\Controllers\Admin\EateryCategoryController;
 use App\Http\Controllers\Admin\EateryController;
 use App\Http\Controllers\Admin\UserListController;
@@ -49,7 +50,7 @@ Route::post('/cart/checkout', [CartController::class, 'checkout'])->middleware('
 Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count')->middleware(['auth']);
 Route::get('/cart/total', [CartController::class, 'total'])->name('cart.total')->middleware(['auth']);
 Route::get('/cart/history', [CartController::class, 'history'])->name('cart.history')->middleware(['auth']);
-Route::get('/cart/AdminHistory', [CartController::class, 'AdminHistory'])->name('cart.admin.history')->middleware(['auth', 'check.admin']);
+Route::resource('cart/AdminHistory', AdminHistory::class)->only(['index', 'update'])->parameters(['AdminHistory' => 'cart'])->middleware(['auth', 'check.admin']);
 
 
 Route::resource('admin/user', UserListController::class)->only(['index','update','destroy'])->middleware(['auth', 'check.admin']);

@@ -109,7 +109,7 @@
                                         <hr class="wheat">
                                         <a href="{{ route('user.index') }}" class="dropdown-item wheat"> User List </a>
                                         <hr class="wheat">
-                                        <a href="{{ route('cart.admin.history') }}" class="dropdown-item wheat text-capitalize"> oder history </a>
+                                        <a href="{{ route('AdminHistory.index') }}" class="dropdown-item wheat text-capitalize"> oder history </a>
                                         <hr class="wheat">
                                         {{-- <a href="#" class="dropdown-item wheat"> Gallery </a>
                                         <a href="#" class="dropdown-item wheat"> Products </a>

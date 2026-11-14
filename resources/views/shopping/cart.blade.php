@@ -216,8 +216,7 @@
                                                                     {{ number_format($item->amount, 2) }}
                                                                 </span>
                                                             </h5>
-                                                            <form action="{{ route('cart.destroy', $item->id) }}"
-                                                                onsubmit="return confirm('Do you want to remove this item from your cart?')"
+                                                            <form action="{{ route('cart.destroy', $item->id) }}" class="delete-form"
                                                                 method="POST">
                                                                 @csrf @method('DELETE')
 

@@ -35,9 +35,9 @@
                                             $statusColor = [
                                                 'added' => 'warning',
                                                 'placed' => 'primary',
-                                                'processing' => 'info',
+                                                'shipped' => 'info',
                                                 'delivered' => 'success',
-                                                'cancelled' => 'danger',
+                                                'canceled' => 'danger',
                                             ];
                                             $statusClass = $statusColor[$history->status] ?? 'secondary';
                                         @endphp
@@ -76,7 +76,7 @@
                                     <div class="col-md-3">
                                         <div class="text-muted small text-uppercase tracking-wide text-md-end">Total</div>
                                         <div class="fw-bold fs-4 text-dark d-flex align-items-center justify-content-md-end justify-content-start h-100">
-                                            ${{ number_format($history->amount, 2) }}
+                                            ₦{{ number_format($history->amount, 2) }}
                                         </div>
                                     </div>
                                 </div>

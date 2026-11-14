@@ -1,66 +1,163 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="" style="background-color: #eeeeee">
-        <div class="container">
-            <div class="container-fluid py-3">
-                <a href="{{ route('cart.index') }}" class="py-3">Back</a>
-                <div class="row">
-                    @forelse ($historys as $history)
-                        <div class="col-12 my-1 py-3"
-                            style="border: #80808090 1px solid; background-color: white; border-radius: 1rem;">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="fw-bold fs-5">
+    <div style="background: linear-gradient(180deg, #f4f6fb 0%, #eef2f8 100%); min-height: 100vh;">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <a href="{{ route('cart.index') }}" class="btn btn-light border shadow-sm rounded-pill px-3">
+                        <i class="bi bi-arrow-left me-2"></i>Back
+                    </a>
+                </div>
+                <div>
+                    <h3 class="mb-0 fw-bold text-dark">Users Order History</h3>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                @forelse ($historyss as $history)
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden" style="background: #ffffff;">
+                            <div class="card-body p-0">
+                                <div
+                                    class="d-flex flex-wrap justify-content-between align-items-center px-4 pt-4 pb-3 border-bottom">
+                                    <div>
                                         @if ($history->status == 'added')
-                                            <span class="rounded-pill px-2 py-1"
-                                                style="background-color: #f8d7da; color: #842029; font-size: 12px;">Order
-                                                still in progress</span>
+                                            <div class="text-warning fw-bold small text-uppercase tracking-wide">Order still
+                                                in progress</div>
+                                        @elseif ($history->status == 'delivered')
+                                            <div class="text-primary fw-bold small text-uppercase tracking-wide">Order
+                                                delivered</div>
                                         @else
-                                            <div class="fw-bold fs-5">
-                                                Order {{ $history->ref }}
-                                            </div>
+                                            <div class="text-dark fw-bold small text-uppercase tracking-wide">Order
+                                                {{ $history->ref }}</div>
                                         @endif
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end fw-bold">
-                                        <span class="rounded-pill px-2 py-1"
-                                            style="background-color: #ffff0086; color: orange; font-size: 12px;">Oder
-                                            {{ $history->status }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <small style="font-size: 12px">{{ $history->created_at }}</small>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <small style="font-size: 12px">{{ $history->quantity }} Item</small>
-                                </div>
-                                <div class="col-3 col-md-1">
-                                    <div class="" style="max-width: 7rem; max-height: 7rem;">
-                                        <img src="{{ asset('uploads/eatery/' . $history->eatery->image) }}"
-                                            class="img-fluid w-100"
-                                            style="height: 100%; object-fit: cover; border-radius: .5rem">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-md-7">
-                                    <div class="d-flex align-items-center" style="height: 100%;">
-                                        <div class="fw-bold fs-5">
-                                            {{ $history->eatery->name }}
+
+                                    <div>
+                                        @php
+                                            $statusColor = [
+                                                'added' => 'warning',
+                                                'placed' => 'primary',
+                                                'shipped' => 'info',
+                                                'delivered' => 'success',
+                                                'canceled' => 'danger',
+                                            ];
+                                            $statusClass = $statusColor[$history->status] ?? 'secondary';
+                                            $statusModalId = 'order-status-modal-' . $history->id;
+                                        @endphp
+
+                                        <button type="button" class="btn btn-light border rounded-pill px-2 py-1"
+                                            data-bs-toggle="modal" data-bs-target="#{{ $statusModalId }}"
+                                            aria-label="Change order status">
+                                            <span class="badge bg-{{ $statusClass }} rounded-pill px-3 py-2 fs-6">
+                                                {{ $history->status == 'added' ? 'In Progress' : ucfirst($history->status) }}
+                                            </span>
+                                        </button>
+
+                                        <div class="modal fade" id="{{ $statusModalId }}" tabindex="-1"
+                                            aria-labelledby="{{ $statusModalId }}-title" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                                role="document">
+                                                <div class="modal-content">
+                                                    <form action="{{ route('AdminHistory.update', $history->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="{{ $statusModalId }}-title">
+                                                                Update order status
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <label class="form-label" for="{{ $statusModalId }}-select">Status</label>
+                                                            @error('status')
+                                                                <div class="text-danger small mb-2">{{ $message }}</div>
+                                                            @enderror
+                                                            <select class="form-select" name="status" id="{{ $statusModalId }}-select" required>
+                                                                <option value="added" @selected($history->status === 'added')>Added to cart</option>
+                                                                <option value="placed" @selected($history->status === 'placed')>Placed</option>
+                                                                <option value="shipped" @selected($history->status === 'shipped')>Shipped</option>
+                                                                <option value="canceled" @selected($history->status === 'canceled')>Cancelled</option>
+                                                                <option value="delivered" @selected($history->status === 'delivered')>Delivered</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Save status
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 col-md-4 d-flex align-items-center justify-content-end" style="height: 100%;">
-                                    <span class="fw-bold fs-5">
-                                        ${{ $history->amount }}
-                                    </span>
+
+                                <div class="row align-items-center px-4 py-4 g-3">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="position-relative"
+                                                style="width: 90px; height: 90px; flex-shrink: 0;">
+                                                <img src="{{ asset('uploads/eatery/' . $history->eatery->image) }}"
+                                                    alt="{{ $history->eatery->name }}"
+                                                    class="img-fluid rounded-4 shadow-sm w-100 h-100"
+                                                    style="object-fit: cover;">
+                                            </div>
+
+                                            <div>
+                                                <div class="fw-bold fs-5 text-dark ">Adress: {{ $history->address }}
+                                                </div>
+                                                <div class="fw-bold fs-5 text-dark ">Email: {{ $history->user->email }}
+                                                </div>
+                                                <div class="fw-bold fs-5 text-dark ">Name: {{ $history->user->name }}</div>
+                                                <div class="text-muted small mb-1">Item Ordered</div>
+                                                <div class="fw-bold fs-5 text-dark">{{ $history->eatery->name }}</div>
+                                                <div class="text-muted small mt-1">
+                                                    {{ $history->created_at->format('d M, Y') }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="text-muted small text-uppercase tracking-wide">Quantity</div>
+                                        <div class="fw-bold fs-5 text-dark">{{ $history->quantity }} item(s)</div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="text-muted small text-uppercase tracking-wide text-md-end">Total</div>
+                                        <div
+                                            class="fw-bold fs-4 text-dark d-flex align-items-center justify-content-md-end justify-content-start h-100">
+                                            ${{ number_format($history->amount, 2) }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @empty
-                    @endforelse
-                </div>
+                    </div>
+                @empty
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-4">
+                            <div class="card-body text-center py-5">
+                                <div class="display-6 mb-2">📦</div>
+                                <h5 class="fw-bold text-dark">No order history yet</h5>
+                                <p class="text-muted mb-0">Your recent orders will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
             </div>
+
+            @if (method_exists($historyss, 'links'))
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $historyss->links('pagination::bootstrap-5') }}
+                </div>
+            @endif
         </div>
     </div>
 @endsection

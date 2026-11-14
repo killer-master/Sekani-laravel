@@ -169,11 +169,11 @@ class CartController extends Controller
     }
 
 
-    public function AdminHistory()
-    {
-        $historyss = Cart::latest()->paginate(5);
-        return view('shopping.AdminHistory', compact('historyss'));
-    }
+    // public function AdminHistory()
+    // {
+    //     $historyss = Cart::latest()->paginate(5);
+    //     return view('shopping.AdminHistory', compact('historyss'));
+    // }
 
 
 
