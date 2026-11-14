@@ -25,7 +25,7 @@
             background:
                 linear-gradient(90deg, rgba(7, 7, 7, .9) 0%, rgba(7, 7, 7, .65) 48%, rgba(7, 7, 7, .2) 100%),
                 linear-gradient(0deg, #0b0b0b 0%, transparent 28%),
-                url('/assets/images/sekani-hero.jpg') center 45% / cover no-repeat,
+                url('/assets/images/A0044F1D-32B1-4D4F-A951-1324D51CE895.jpeg') center 45% / cover no-repeat,
                 #111;
         }
 
