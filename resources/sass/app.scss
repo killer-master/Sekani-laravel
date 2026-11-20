@@ -1,16 +1,12 @@
-// // bootstrap
-// // Import all of Bootstrap’s CSS
-// @import "bootstrap/scss/bootstrap";
+// 
 
-// // fontawesome
-// @import "@fortawesome/fontawesome-free/css/all.min.css";
 
-// Fonts
+
+
+@import "bootstrap/scss/bootstrap";
+@import "@fortawesome/fontawesome-free/css/all.css";
+
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-// Variables
-// @import 'variables';
-
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
-
+/* Sekani custom styles */
+// @import "../css/style.css";
