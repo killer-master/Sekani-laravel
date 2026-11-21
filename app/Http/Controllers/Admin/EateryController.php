@@ -136,7 +136,7 @@ class EateryController extends Controller
             $file = $request->file('image');
             $ext = $file->extension();
             $fileName = Str::random(36) . "." . $ext;
-            $file->move('uploads/eatery/', $fileName);
+            $file->move(public_path('uploads/eatery'), $fileName);
 
             Eatery::where('sku', $sku)->update([
                 'name' => $data['name'],

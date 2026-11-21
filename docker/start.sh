@@ -17,9 +17,10 @@ mkdir -p storage/framework/views
 mkdir -p storage/logs
 mkdir -p bootstrap/cache
 mkdir -p database
+mkdir -p public/uploads/eatery
 
-chown -R www-data:www-data storage bootstrap/cache database
-chmod -R 775 storage bootstrap/cache database
+chown -R www-data:www-data storage bootstrap/cache database public/uploads
+chmod -R 775 storage bootstrap/cache database public/uploads
 
 # Create SQLite database if it doesn't exist
 touch database/database.sqlite

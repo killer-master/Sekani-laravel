@@ -64,9 +64,9 @@ COPY . .
 RUN composer dump-autoload --no-dev --optimize \
     && php artisan package:discover --ansi \
     && npm run build \
-    && mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache database \
-    && chown -R www-data:www-data storage bootstrap/cache database \
-    && chmod -R 775 storage bootstrap/cache database
+    && mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache database public/uploads/eatery \
+    && chown -R www-data:www-data storage bootstrap/cache database public/uploads \
+    && chmod -R 775 storage bootstrap/cache database public/uploads
 
 # Render port
 EXPOSE 10000
