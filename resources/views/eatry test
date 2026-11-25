@@ -1,0 +1,1046 @@
+@extends('layouts.app')
+
+@section('content')
+    <main class="eatery-showcase">
+        <header class="showcase-nav">
+            <a class="showcase-brand" href="{{ route('home.page') }}" aria-label="Sekani home">
+                <span class="showcase-brand-mark"><i class="fa-solid fa-utensils" aria-hidden="true"></i></span>
+                <span>SEKANI<span class="showcase-brand-period">.</span></span>
+            </a>
+            <nav class="showcase-nav-links" aria-label="Main navigation">
+                <a class="showcase-nav-link showcase-nav-current" href="#showcase-menu">Menu</a>
+                <a class="showcase-nav-link" href="{{ route('home.page') }}">Discover Sekani</a>
+                @auth
+                    <a class="showcase-nav-cart" href="{{ route('cart.index') }}">
+                        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                        <span>My cart</span>
+                    </a>
+                @else
+                    <a class="showcase-nav-cart" href="{{ route('login') }}">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span>Sign in</span>
+                    </a>
+                @endauth
+            </nav>
+        </header>
+
+        <section class="showcase-hero">
+            <div class="showcase-hero-copy">
+                <p class="showcase-eyebrow"><span></span> GOOD FOOD. GOOD MOOD.</p>
+                <h1>A little joy<br>on <em>every plate.</em></h1>
+                <p class="showcase-hero-text">
+                    From familiar favourites to something new, find the meal that makes today a little better.
+                    Freshly prepared and ready when you are.
+                </p>
+                <div class="showcase-hero-actions">
+                    <a class="showcase-primary-link" href="#showcase-menu">
+                        Explore the menu <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                    </a>
+                    <span class="showcase-hero-note"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Made fresh, served with care</span>
+                </div>
+                <div class="showcase-hero-stats" aria-label="Dining highlights">
+                    <div><strong>Made fresh</strong><span>when you order</span></div>
+                    <span class="showcase-stat-divider" aria-hidden="true"></span>
+                    <div><strong>Local taste</strong><span>with a little extra</span></div>
+                </div>
+            </div>
+            <div class="showcase-hero-art">
+                <div class="showcase-hero-image-frame">
+                    <img src="{{ asset('assets/images/food-comp.jpg') }}" alt="A selection of delicious meals"
+                        fetchpriority="high">
+                </div>
+                <div class="showcase-hero-sticker">
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                    <span>Made for<br>sharing</span>
+                </div>
+                <span class="showcase-hero-spark showcase-spark-one" aria-hidden="true">✳</span>
+                <span class="showcase-hero-spark showcase-spark-two" aria-hidden="true">✳</span>
+            </div>
+        </section>
+
+        <section class="showcase-menu-section" id="showcase-menu">
+            <div class="showcase-menu-heading">
+                <div>
+                    <p class="showcase-eyebrow"><span></span> FIND YOUR FAVOURITE</p>
+                    <h2>Good things<br class="showcase-mobile-break"> are on the menu.</h2>
+                </div>
+                <p class="showcase-menu-intro">Take your time. Something delicious is waiting for you.</p>
+            </div>
+
+            <div class="showcase-controls">
+                <div class="showcase-filter-list" role="group" aria-label="Filter menu by category">
+                    <button class="showcase-filter is-active" type="button" data-category-filter="all" aria-pressed="true">
+                        Everything
+                    </button>
+                    @foreach ($categories as $category)
+                        <button class="showcase-filter" type="button"
+                            data-category-filter="{{ $category->id }}" aria-pressed="false">
+                            {{ $category->name }}
+                        </button>
+                    @endforeach
+                </div>
+                <label class="showcase-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <span class="visually-hidden">Search menu</span>
+                    <input type="search" id="showcase-search" placeholder="Find a dish..." autocomplete="off">
+                    <kbd>/</kbd>
+                </label>
+            </div>
+
+            <p class="showcase-results" id="showcase-results" aria-live="polite"></p>
+
+            @if ($eaterys->flatten()->isEmpty())
+                <div class="showcase-empty">
+                    <span><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></span>
+                    <h3>The menu is getting ready</h3>
+                    <p>Check back soon for something delicious.</p>
+                </div>
+            @else
+            @foreach ($categories as $category)
+                @php
+                    $categoryItems = $eaterys[$category->id] ?? collect();
+                @endphp
+                @if ($categoryItems->isNotEmpty())
+                    <section class="showcase-category" data-category-section="{{ $category->id }}">
+                        <div class="showcase-category-heading">
+                            <h3>{{ $category->name }}</h3>
+                            <span>{{ str_pad($categoryItems->count(), 2, '0', STR_PAD_LEFT) }} <span>delicious picks</span></span>
+                        </div>
+
+                        <div class="showcase-grid">
+                            @foreach ($categoryItems as $eatery)
+                                <article class="showcase-dish"
+                                    data-menu-card
+                                    data-category-id="{{ $category->id }}"
+                                    data-search-text="{{ strtolower($eatery->name . ' ' . $eatery->description . ' ' . $category->name) }}">
+                                    <a class="showcase-dish-image" href="{{ route('eateryView.page', $eatery->sku) }}"
+                                        aria-label="View {{ $eatery->name }}">
+                                        <img src="{{ $eatery->image ? asset('uploads/eatery/' . $eatery->image) : asset('images/default-eatery.jpg') }}"
+                                            alt="{{ $eatery->name }}" loading="lazy" decoding="async">
+                                        <span class="showcase-dish-category">{{ $category->name }}</span>
+                                        <span class="showcase-image-arrow" aria-hidden="true">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </span>
+                                    </a>
+                                    <div class="showcase-dish-content">
+                                        <div class="showcase-dish-copy">
+                                            <h4>{{ $eatery->name }}</h4>
+                                            <p>{{ \Illuminate\Support\Str::limit($eatery->description, 88) }}</p>
+                                        </div>
+                                        <div class="showcase-dish-bottom">
+                                            <strong>₦{{ number_format($eatery->price, 2) }}</strong>
+                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="eatery" value="{{ $eatery->id }}">
+                                                <button class="showcase-add-button" type="submit"
+                                                    aria-label="Add {{ $eatery->name }} to cart">
+                                                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                                                    <span>Add</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </section>
+                @endif
+            @endforeach
+            @endif
+
+            <div class="showcase-no-results" id="showcase-no-results" hidden>
+                <span><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
+                <h3>No dishes found</h3>
+                <p>Try a different search or choose another category.</p>
+            </div>
+        </section>
+
+        <footer class="showcase-footer">
+            <a class="showcase-brand" href="{{ route('home.page') }}">
+                <span class="showcase-brand-mark"><i class="fa-solid fa-utensils" aria-hidden="true"></i></span>
+                <span>SEKANI<span class="showcase-brand-period">.</span></span>
+            </a>
+            <p>Come hungry. Leave happy.</p>
+            <a href="#showcase-menu">Back to menu <i class="fa-solid fa-arrow-up ms-1" aria-hidden="true"></i></a>
+        </footer>
+    </main>
+
+    <style>
+        .eatery-showcase {
+            --showcase-ink: #25241f;
+            --showcase-muted: #77766f;
+            --showcase-paper: #faf9f5;
+            --showcase-accent: #d6502a;
+            --showcase-line: #e8e5dc;
+            min-height: 100vh;
+            overflow: hidden;
+            background: var(--showcase-paper);
+            color: var(--showcase-ink);
+            font-family: Inter, "Segoe UI", sans-serif;
+        }
+
+        .eatery-showcase *,
+        .eatery-showcase *::before,
+        .eatery-showcase *::after {
+            box-sizing: border-box;
+        }
+
+        .showcase-nav,
+        .showcase-nav-links,
+        .showcase-brand,
+        .showcase-hero-actions,
+        .showcase-hero-stats,
+        .showcase-menu-heading,
+        .showcase-controls,
+        .showcase-filter-list,
+        .showcase-category-heading,
+        .showcase-dish-bottom,
+        .showcase-footer {
+            display: flex;
+            align-items: center;
+        }
+
+        .showcase-nav {
+            width: min(1320px, calc(100% - 3rem));
+            min-height: 82px;
+            justify-content: space-between;
+            margin-inline: auto;
+            border-bottom: 1px solid rgba(37, 36, 31, .1);
+        }
+
+        .showcase-brand {
+            gap: .7rem;
+            color: var(--showcase-ink);
+            font-size: .88rem;
+            font-weight: 850;
+            letter-spacing: .14em;
+            text-decoration: none;
+        }
+
+        .showcase-brand-mark {
+            display: grid;
+            width: 2.45rem;
+            height: 2.45rem;
+            place-items: center;
+            border-radius: .9rem;
+            background: var(--showcase-accent);
+            color: white;
+            font-size: .95rem;
+        }
+
+        .showcase-brand-period {
+            color: var(--showcase-accent);
+        }
+
+        .showcase-nav-links {
+            gap: clamp(1rem, 3vw, 2.5rem);
+        }
+
+        .showcase-nav-link,
+        .showcase-nav-cart {
+            color: var(--showcase-muted);
+            font-size: .87rem;
+            font-weight: 650;
+            text-decoration: none;
+            transition: color .18s ease;
+        }
+
+        .showcase-nav-current,
+        .showcase-nav-link:hover,
+        .showcase-nav-cart:hover {
+            color: var(--showcase-accent);
+        }
+
+        .showcase-nav-cart {
+            display: inline-flex;
+            min-height: 2.7rem;
+            align-items: center;
+            gap: .55rem;
+            padding: .6rem 1rem;
+            border: 1px solid var(--showcase-line);
+            border-radius: 999px;
+            color: var(--showcase-ink);
+        }
+
+        .showcase-hero {
+            display: grid;
+            width: min(1320px, calc(100% - 3rem));
+            min-height: min(690px, calc(100svh - 82px));
+            grid-template-columns: 1fr .95fr;
+            align-items: center;
+            gap: clamp(2rem, 6vw, 6rem);
+            margin-inline: auto;
+            padding-block: clamp(3rem, 7vw, 6rem);
+        }
+
+        .showcase-hero-copy {
+            position: relative;
+            z-index: 1;
+            padding-block: 1rem;
+        }
+
+        .showcase-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            margin: 0 0 1.2rem;
+            color: var(--showcase-accent);
+            font-size: .7rem;
+            font-weight: 850;
+            letter-spacing: .17em;
+        }
+
+        .showcase-eyebrow > span {
+            width: 1.8rem;
+            height: 2px;
+            background: currentColor;
+        }
+
+        .showcase-hero h1 {
+            max-width: 700px;
+            margin: 0;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: clamp(3.5rem, 7.3vw, 7rem);
+            font-weight: 400;
+            letter-spacing: -.055em;
+            line-height: .96;
+        }
+
+        .showcase-hero h1 em {
+            color: var(--showcase-accent);
+            font-weight: 400;
+        }
+
+        .showcase-hero-text {
+            max-width: 490px;
+            margin: 1.5rem 0 1.75rem;
+            color: var(--showcase-muted);
+            font-size: clamp(.98rem, 1.3vw, 1.08rem);
+            line-height: 1.8;
+        }
+
+        .showcase-hero-actions {
+            flex-wrap: wrap;
+            gap: 1rem 1.35rem;
+        }
+
+        .showcase-primary-link {
+            display: inline-flex;
+            min-height: 3.25rem;
+            align-items: center;
+            gap: .8rem;
+            padding: .8rem 1.3rem;
+            border-radius: 999px;
+            background: var(--showcase-accent);
+            color: #fff !important;
+            font-size: .9rem;
+            font-weight: 750;
+            text-decoration: none;
+            transition: transform .18s ease, background-color .18s ease;
+        }
+
+        .showcase-primary-link:hover {
+            transform: translateY(-2px);
+            background: #b94220;
+        }
+
+        .showcase-hero-note {
+            color: var(--showcase-muted);
+            font-size: .82rem;
+        }
+
+        .showcase-hero-note i {
+            margin-right: .4rem;
+            color: #4a8054;
+        }
+
+        .showcase-hero-stats {
+            max-width: 360px;
+            gap: 1.5rem;
+            margin-top: clamp(2rem, 4vw, 3.25rem);
+        }
+
+        .showcase-hero-stats div {
+            display: grid;
+            gap: .25rem;
+        }
+
+        .showcase-hero-stats strong {
+            font-size: .9rem;
+        }
+
+        .showcase-hero-stats div span {
+            color: var(--showcase-muted);
+            font-size: .77rem;
+        }
+
+        .showcase-stat-divider {
+            width: 1px;
+            height: 2.5rem;
+            background: var(--showcase-line);
+        }
+
+        .showcase-hero-art {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            justify-self: end;
+        }
+
+        .showcase-hero-image-frame {
+            position: relative;
+            height: clamp(340px, 42vw, 540px);
+            overflow: hidden;
+            border-radius: 47% 47% 2rem 2rem;
+            background: #e8ddd0;
+            box-shadow: 0 35px 75px rgba(67, 46, 32, .16);
+            transform: rotate(2deg);
+        }
+
+        .showcase-hero-image-frame::after {
+            position: absolute;
+            inset: 45% 0 0;
+            background: linear-gradient(transparent, rgba(33, 24, 19, .2));
+            content: "";
+            pointer-events: none;
+        }
+
+        .showcase-hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .showcase-hero-sticker {
+            position: absolute;
+            z-index: 1;
+            right: -1.5rem;
+            bottom: 3rem;
+            display: grid;
+            width: 6.4rem;
+            height: 6.4rem;
+            align-content: center;
+            justify-items: center;
+            gap: .35rem;
+            border: 5px solid var(--showcase-paper);
+            border-radius: 50%;
+            background: var(--showcase-accent);
+            color: white;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: .95rem;
+            line-height: 1.1;
+            text-align: center;
+            transform: rotate(8deg);
+        }
+
+        .showcase-hero-sticker i {
+            font-size: .85rem;
+        }
+
+        .showcase-hero-spark {
+            position: absolute;
+            color: #dfab46;
+            font-size: 2.8rem;
+        }
+
+        .showcase-spark-one {
+            top: 5%;
+            right: -4%;
+        }
+
+        .showcase-spark-two {
+            bottom: 8%;
+            left: -7%;
+            color: #66836b;
+            font-size: 1.9rem;
+        }
+
+        .showcase-menu-section {
+            width: min(1320px, calc(100% - 3rem));
+            margin-inline: auto;
+            padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+            border-top: 1px solid var(--showcase-line);
+        }
+
+        .showcase-menu-heading {
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .showcase-menu-heading .showcase-eyebrow {
+            margin-bottom: .85rem;
+        }
+
+        .showcase-menu-heading h2 {
+            margin: 0;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: clamp(2.2rem, 4vw, 3.75rem);
+            font-weight: 400;
+            letter-spacing: -.04em;
+            line-height: 1.03;
+        }
+
+        .showcase-mobile-break {
+            display: none;
+        }
+
+        .showcase-menu-intro {
+            max-width: 285px;
+            margin: 0 0 .25rem;
+            color: var(--showcase-muted);
+            font-size: .92rem;
+            line-height: 1.75;
+        }
+
+        .showcase-controls {
+            justify-content: space-between;
+            gap: 1rem;
+            padding: .75rem 0;
+            border-top: 1px solid var(--showcase-line);
+            border-bottom: 1px solid var(--showcase-line);
+        }
+
+        .showcase-filter-list {
+            flex-wrap: wrap;
+            gap: .45rem;
+        }
+
+        .showcase-filter {
+            min-height: 2.45rem;
+            padding: .55rem .9rem;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--showcase-muted);
+            font: inherit;
+            font-size: .82rem;
+            font-weight: 700;
+            transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+        }
+
+        .showcase-filter:hover {
+            border-color: var(--showcase-line);
+            color: var(--showcase-ink);
+        }
+
+        .showcase-filter.is-active {
+            background: var(--showcase-ink);
+            color: #fff;
+        }
+
+        .showcase-search {
+            display: flex;
+            min-width: 200px;
+            min-height: 2.65rem;
+            align-items: center;
+            gap: .65rem;
+            padding: .45rem .7rem;
+            border: 1px solid var(--showcase-line);
+            border-radius: .8rem;
+            background: #fff;
+            color: var(--showcase-muted);
+        }
+
+        .showcase-search input {
+            width: 100%;
+            min-width: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--showcase-ink);
+            font: inherit;
+            font-size: .84rem;
+        }
+
+        .showcase-search kbd {
+            display: grid;
+            width: 1.45rem;
+            height: 1.45rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--showcase-line);
+            border-radius: .35rem;
+            background: #f7f6f1;
+            color: var(--showcase-muted);
+            font-size: .75rem;
+        }
+
+        .showcase-results {
+            min-height: 1rem;
+            margin: .75rem 0 0;
+            color: var(--showcase-muted);
+            font-size: .8rem;
+        }
+
+        .showcase-category {
+            margin-top: 2.2rem;
+        }
+
+        .showcase-category-heading {
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .showcase-category-heading h3 {
+            margin: 0;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+        }
+
+        .showcase-category-heading > span {
+            color: var(--showcase-accent);
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+        .showcase-category-heading > span span {
+            color: var(--showcase-muted);
+            font-weight: 500;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .showcase-dish {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--showcase-line);
+            border-radius: 1rem;
+            background: #fff;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .showcase-dish:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(37, 36, 31, .1);
+        }
+
+        .showcase-dish[hidden],
+        .showcase-category[hidden] {
+            display: none;
+        }
+
+        .showcase-dish-image {
+            position: relative;
+            display: block;
+            aspect-ratio: 1.22;
+            overflow: hidden;
+            background: #eeeae2;
+        }
+
+        .showcase-dish-image::after {
+            position: absolute;
+            inset: 45% 0 0;
+            background: linear-gradient(transparent, rgba(24, 21, 17, .24));
+            content: "";
+            pointer-events: none;
+        }
+
+        .showcase-dish-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .45s ease;
+        }
+
+        .showcase-dish:hover .showcase-dish-image img {
+            transform: scale(1.05);
+        }
+
+        .showcase-dish-category {
+            position: absolute;
+            z-index: 1;
+            top: .7rem;
+            left: .7rem;
+            max-width: calc(100% - 3rem);
+            overflow: hidden;
+            padding: .4rem .65rem;
+            border: 1px solid rgba(255, 255, 255, .4);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .9);
+            color: var(--showcase-ink);
+            font-size: .68rem;
+            font-weight: 750;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .showcase-image-arrow {
+            position: absolute;
+            z-index: 1;
+            right: .7rem;
+            bottom: .7rem;
+            display: grid;
+            width: 2rem;
+            height: 2rem;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .92);
+            color: var(--showcase-ink);
+            font-size: .72rem;
+        }
+
+        .showcase-dish-content {
+            padding: .95rem;
+        }
+
+        .showcase-dish-copy h4 {
+            margin: 0 0 .4rem;
+            font-size: 1rem;
+            font-weight: 780;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .showcase-dish-copy p {
+            min-height: 2.65em;
+            margin: 0;
+            color: var(--showcase-muted);
+            font-size: .78rem;
+            line-height: 1.55;
+        }
+
+        .showcase-dish-bottom {
+            justify-content: space-between;
+            gap: .5rem;
+            margin-top: 1rem;
+            padding-top: .8rem;
+            border-top: 1px solid #f0eee8;
+        }
+
+        .showcase-dish-bottom > strong {
+            font-size: .94rem;
+            font-weight: 850;
+            white-space: nowrap;
+        }
+
+        .showcase-add-button {
+            display: inline-flex;
+            min-height: 2.35rem;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            padding: .5rem .75rem;
+            border: 0;
+            border-radius: 999px;
+            background: #f9e9e2;
+            color: #a63c1c;
+            font: inherit;
+            font-size: .78rem;
+            font-weight: 800;
+            transition: background-color .18s ease, color .18s ease;
+        }
+
+        .showcase-add-button:hover {
+            background: var(--showcase-accent);
+            color: #fff;
+        }
+
+        .showcase-empty,
+        .showcase-no-results {
+            padding: 4rem 1rem;
+            color: var(--showcase-muted);
+            text-align: center;
+        }
+
+        .showcase-empty > span,
+        .showcase-no-results > span {
+            display: grid;
+            width: 3.5rem;
+            height: 3.5rem;
+            place-items: center;
+            margin: 0 auto 1rem;
+            border-radius: 1.2rem;
+            background: #f4e8df;
+            color: var(--showcase-accent);
+            font-size: 1.3rem;
+        }
+
+        .showcase-empty h3,
+        .showcase-no-results h3 {
+            margin: 0 0 .45rem;
+            color: var(--showcase-ink);
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 1.7rem;
+            font-weight: 400;
+        }
+
+        .showcase-empty p,
+        .showcase-no-results p {
+            margin: 0;
+            font-size: .9rem;
+        }
+
+        .showcase-footer {
+            width: min(1320px, calc(100% - 3rem));
+            min-height: 90px;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-inline: auto;
+            border-top: 1px solid var(--showcase-line);
+        }
+
+        .showcase-footer p {
+            margin: 0;
+            color: var(--showcase-muted);
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 1.05rem;
+        }
+
+        .showcase-footer > a:last-child {
+            color: var(--showcase-muted);
+            font-size: .82rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1000px) {
+            .showcase-hero {
+                min-height: 0;
+                grid-template-columns: 1fr .85fr;
+                gap: 2rem;
+            }
+
+            .showcase-hero h1 {
+                font-size: clamp(3.3rem, 7vw, 5.4rem);
+            }
+
+            .showcase-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
+            .showcase-nav {
+                width: calc(100% - 2rem);
+                min-height: 70px;
+            }
+
+            .showcase-nav-links {
+                gap: 1rem;
+            }
+
+            .showcase-nav-link {
+                display: none;
+            }
+
+            .showcase-hero {
+                width: calc(100% - 2rem);
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding-block: 3.5rem 3rem;
+            }
+
+            .showcase-hero-copy {
+                padding: 0;
+            }
+
+            .showcase-hero h1 {
+                max-width: 560px;
+                font-size: clamp(3.7rem, 12vw, 6rem);
+            }
+
+            .showcase-hero-art {
+                width: min(100% - 1rem, 470px);
+                justify-self: center;
+            }
+
+            .showcase-hero-image-frame {
+                height: clamp(290px, 72vw, 430px);
+            }
+
+            .showcase-hero-sticker {
+                right: -.5rem;
+                bottom: 1.5rem;
+            }
+
+            .showcase-menu-section,
+            .showcase-footer {
+                width: calc(100% - 2rem);
+            }
+
+            .showcase-menu-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: .9rem;
+            }
+
+            .showcase-menu-intro {
+                max-width: 430px;
+            }
+
+            .showcase-controls {
+                align-items: stretch;
+                flex-direction: column-reverse;
+            }
+
+            .showcase-search {
+                width: 100%;
+            }
+
+            .showcase-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: .75rem;
+            }
+
+            .showcase-dish-content {
+                padding: .75rem;
+            }
+
+            .showcase-dish-copy p {
+                min-height: 3.1em;
+                font-size: .75rem;
+            }
+
+            .showcase-dish-bottom > strong {
+                font-size: .83rem;
+            }
+
+            .showcase-add-button {
+                min-height: 2.2rem;
+                padding: .45rem .65rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .showcase-nav {
+                width: calc(100% - 1.25rem);
+            }
+
+            .showcase-nav-cart {
+                min-height: 2.4rem;
+                padding: .45rem .7rem;
+                font-size: .78rem;
+            }
+
+            .showcase-hero,
+            .showcase-menu-section,
+            .showcase-footer {
+                width: calc(100% - 1.25rem);
+            }
+
+            .showcase-hero h1 {
+                font-size: clamp(3.15rem, 14vw, 4rem);
+            }
+
+            .showcase-hero-stats {
+                gap: 1rem;
+            }
+
+            .showcase-filter-list {
+                gap: .25rem;
+            }
+
+            .showcase-filter {
+                min-height: 2.2rem;
+                padding: .45rem .65rem;
+                font-size: .75rem;
+            }
+
+            .showcase-grid {
+                gap: .55rem;
+            }
+
+            .showcase-dish-image {
+                aspect-ratio: .95;
+            }
+
+            .showcase-dish-copy h4 {
+                font-size: .9rem;
+            }
+
+            .showcase-dish-copy p {
+                font-size: .71rem;
+            }
+
+            .showcase-add-button span {
+                display: none;
+            }
+
+            .showcase-footer {
+                min-height: 78px;
+            }
+
+            .showcase-footer p {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eatery-showcase *,
+            .eatery-showcase *::before,
+            .eatery-showcase *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+        }
+    </style>
+
+    <script>
+        (() => {
+            const page = document.querySelector('.eatery-showcase');
+            if (!page) return;
+
+            const cards = [...page.querySelectorAll('[data-menu-card]')];
+            const sections = [...page.querySelectorAll('[data-category-section]')];
+            const filters = [...page.querySelectorAll('[data-category-filter]')];
+            const search = page.querySelector('#showcase-search');
+            const results = page.querySelector('#showcase-results');
+            const noResults = page.querySelector('#showcase-no-results');
+            let activeCategory = 'all';
+
+            const updateMenu = () => {
+                const query = search.value.trim().toLocaleLowerCase();
+                let visibleCount = 0;
+
+                cards.forEach((card) => {
+                    const categoryMatches = activeCategory === 'all'
+                        || card.dataset.categoryId === activeCategory;
+                    const searchMatches = !query || card.dataset.searchText.includes(query);
+                    const visible = categoryMatches && searchMatches;
+
+                    card.hidden = !visible;
+                    visibleCount += Number(visible);
+                });
+
+                sections.forEach((section) => {
+                    section.hidden = !section.querySelector('[data-menu-card]:not([hidden])');
+                });
+
+                noResults.hidden = cards.length === 0 || visibleCount > 0;
+                results.textContent = cards.length === 0
+                    ? ''
+                    : `${visibleCount} ${visibleCount === 1 ? 'dish' : 'dishes'} to explore`;
+            };
+
+            filters.forEach((filter) => {
+                filter.addEventListener('click', () => {
+                    activeCategory = filter.dataset.categoryFilter;
+                    filters.forEach((item) => {
+                        const selected = item === filter;
+                        item.classList.toggle('is-active', selected);
+                        item.setAttribute('aria-pressed', String(selected));
+                    });
+                    updateMenu();
+                });
+            });
+
+            search.addEventListener('input', updateMenu);
+            page.addEventListener('keydown', (event) => {
+                if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                    event.preventDefault();
+                    search.focus();
+                }
+            });
+
+            updateMenu();
+        })();
+    </script>
+@endsection
