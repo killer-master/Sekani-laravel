@@ -341,31 +341,32 @@
 
                 <div class="col-12 col-lg-7">
                     <div class="contact-preview-form-card">
-                        <form action="">
+                        <form id="contact-whatsapp-form">
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
                                 <div class="row g-2">
                                     <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="First name"
-                                            aria-label="First name">
+                                        <input type="text" class="form-control" id="contact-first-name"
+                                            placeholder="First name" aria-label="First name" required>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Last name"
-                                            aria-label="Last name">
+                                        <input type="text" class="form-control" id="contact-last-name"
+                                            placeholder="Last name" aria-label="Last name" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="contact-preview-email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="contact-preview-email"
-                                    placeholder="you@example.com">
+                                    placeholder="you@example.com" required>
                             </div>
                             <div class="mb-4">
                                 <label for="contact-preview-message" class="form-label">Message</label>
-                                <textarea class="form-control" id="contact-preview-message" rows="5" placeholder="How can we help?"></textarea>
+                                <textarea class="form-control" id="contact-preview-message" rows="5"
+                                    placeholder="How can we help?" required></textarea>
                             </div>
                             <button type="submit" class="contact-preview-submit">
-                                Send message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                Send via WhatsApp <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                             </button>
                         </form>
                     </div>
@@ -382,4 +383,40 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
     </main>
+
+    <script>
+        (() => {
+            const form = document.getElementById('contact-whatsapp-form');
+
+            if (!form) {
+                return;
+            }
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                if (!form.reportValidity()) {
+                    return;
+                }
+
+                const firstName = document.getElementById('contact-first-name').value.trim();
+                const lastName = document.getElementById('contact-last-name').value.trim();
+                const email = document.getElementById('contact-preview-email').value.trim();
+                const message = document.getElementById('contact-preview-message').value.trim();
+                const whatsappMessage = [
+                    'Hello Sekani, I would like to get in touch.',
+                    '',
+                    `Name: ${firstName} ${lastName}`,
+                    `Email: ${email}`,
+                    '',
+                    'Message:',
+                    message
+                ].join('\n');
+
+                window.location.assign(
+                    `https://wa.me/2349065404205?text=${encodeURIComponent(whatsappMessage)}`
+                );
+            });
+        })();
+    </script>
 @endsection

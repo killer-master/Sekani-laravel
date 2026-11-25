@@ -30,6 +30,7 @@ Route::get('/', [PageController::class, 'welcome'])->name('home.page');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact.page');
 Route::get('/eatry', [PageController::class, 'eatry'])->name('eatry.page');
 Route::get('/game', [PageController::class, 'game'])->name('game.page');
+Route::get('/game/preview', [PageController::class, 'gamePreview'])->name('game.preview');
 Route::get('/fitness', [PageController::class, 'fitness'])->name('fitness.page');
 Route::get('/pastry', [PageController::class, 'pastry'])->name('pastry.page');
 Route::get('/planning', [PageController::class, 'planning'])->name('planning.page');

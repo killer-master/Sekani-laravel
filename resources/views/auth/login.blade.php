@@ -38,15 +38,25 @@
                 <div class="sek-login-group">
                     <x-input-label class="sek-login-label" for="password" :value="__('Password')" />
 
-                    <x-text-input
-                        id="password"
-                        class="sek-login-input"
-                        type="password"
-                        name="password"
-                        required
-                        autocomplete="current-password"
-                        placeholder="Enter your password"
-                    />
+                    <div class="sek-password-field">
+                        <x-text-input
+                            id="password"
+                            class="sek-login-input"
+                            type="password"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                        />
+                        <button
+                            class="sek-password-toggle"
+                            type="button"
+                            data-password-toggle
+                            aria-controls="password"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                        >Show</button>
+                    </div>
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>

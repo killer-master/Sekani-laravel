@@ -3467,6 +3467,35 @@ body {
     box-shadow: 0 0 0 4px rgba(255, 90, 10, .15) !important;
 }
 
+.sek-password-field {
+    position: relative;
+}
+
+.sek-password-field .sek-login-input {
+    padding-right: 72px !important;
+}
+
+.sek-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    padding: 6px;
+    border: 0;
+    background: transparent;
+    color: #ff8a50;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sek-password-toggle:focus-visible {
+    outline: 2px solid #ff8a50;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
 .sek-login-remember {
     display: flex;
     justify-content: space-between;

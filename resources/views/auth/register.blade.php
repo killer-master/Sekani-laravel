@@ -87,15 +87,25 @@
                         :value="__('Password')"
                     />
 
-                    <x-text-input
-                        id="password"
-                        class="sek-login-input"
-                        type="password"
-                        name="password"
-                        required
-                        autocomplete="new-password"
-                        placeholder="Create a password"
-                    />
+                    <div class="sek-password-field">
+                        <x-text-input
+                            id="password"
+                            class="sek-login-input"
+                            type="password"
+                            name="password"
+                            required
+                            autocomplete="new-password"
+                            placeholder="Create a password"
+                        />
+                        <button
+                            class="sek-password-toggle"
+                            type="button"
+                            data-password-toggle
+                            aria-controls="password"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                        >Show</button>
+                    </div>
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2"/>
                 </div>
@@ -108,15 +118,25 @@
                         :value="__('Confirm Password')"
                     />
 
-                    <x-text-input
-                        id="password_confirmation"
-                        class="sek-login-input"
-                        type="password"
-                        name="password_confirmation"
-                        required
-                        autocomplete="new-password"
-                        placeholder="Confirm your password"
-                    />
+                    <div class="sek-password-field">
+                        <x-text-input
+                            id="password_confirmation"
+                            class="sek-login-input"
+                            type="password"
+                            name="password_confirmation"
+                            required
+                            autocomplete="new-password"
+                            placeholder="Confirm your password"
+                        />
+                        <button
+                            class="sek-password-toggle"
+                            type="button"
+                            data-password-toggle
+                            aria-controls="password_confirmation"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                        >Show</button>
+                    </div>
 
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
                 </div>

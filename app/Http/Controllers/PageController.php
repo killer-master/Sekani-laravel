@@ -30,6 +30,10 @@ class PageController extends Controller
     {
         return view('game');
     }
+    public function gamePreview()
+    {
+        return view('game-preview');
+    }
     public function fitness()
     {
         return view('fitness');
